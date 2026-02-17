@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prabhas PPT Maker - All-in-One PPT Tools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Top Navigation ===== */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-brand img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .nav-brand-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-brand-text span {
+      color: #e74c3c;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #e74c3c;
+    }
+
+    .nav-startup-tag {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      text-align: center;
+      padding: 48px 20px 32px;
+      background: #fff;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: #e74c3c;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #777;
+      max-width: 550px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero-sub {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #aab;
+    }
+
+    .hero-sub strong {
+      color: #e74c3c;
+    }
+
+    /* ===== Cards Grid ===== */
+    .cards-section {
+      padding: 10px 20px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 2px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 28px 18px 22px;
+      text-align: center;
+      text-decoration: none;
+      color: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: transparent;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Card accent on hover */
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+      background: var(--card-color, #27ae60);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .feature-card:hover::after {
+      opacity: 1;
+    }
+
+    .card-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-bottom: 14px;
+      background: var(--card-bg, #eafaf1);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover .card-icon-wrap {
+      transform: scale(1.1);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #1a1a2e;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    /* Card Colors */
+    .card-create {
+      --card-color: #27ae60;
+      --card-bg: #eafaf1;
+    }
+
+
+
+    .card-block {
+      --card-color: #3498db;
+      --card-bg: #ebf5fb;
+    }
+
+    .card-convert {
+      --card-color: #e74c3c;
+      --card-bg: #fdedec;
+    }
+
+    .card-edit {
+      --card-color: #9b59b6;
+      --card-bg: #f5eef8;
+    }
+
+    /* ===== Features Strip ===== */
+    .features-strip {
+      background: #f9fafb;
+      border-top: 1px solid #f0f0f0;
+      padding: 28px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .feature-stat {
+      text-align: center;
+    }
+
+    .feature-stat .num {
+      font-size: 26px;
+      font-weight: 800;
+      color: #27ae60;
+    }
+
+    .feature-stat .label {
+      font-size: 12px;
+      color: #888;
+      font-weight: 500;
+    }
+
+    /* ===== About Section ===== */
+    .about-section {
+      padding: 32px 20px;
+      text-align: center;
+      background: #fff;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .about-section h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .about-section p {
+      font-size: 13px;
+      color: #888;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .about-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .about-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f0f0f0;
+      color: #555;
+    }
+
+    .about-badge.green {
+      background: #eafaf1;
+      color: #27ae60;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      padding: 16px 20px;
+      text-align: center;
+      background: #f9fafb;
+      color: #aab;
+      font-size: 12px;
+      border-top: 1px solid #f0f0f0;
+      margin-top: auto;
+    }
+
+    .footer a {
+      color: #e74c3c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .feature-card {
+        padding: 20px 12px 16px;
+      }
+
+      .card-icon-wrap {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .top-nav {
+        padding: 10px 16px;
+      }
+
+      .features-strip {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.jpg" alt="Logo">
+      <span class="nav-brand-text"><span>Prabhas</span> PPT</span>
+    </a>
+    <div class="nav-links">
+      <a href="ppt.html" class="nav-link">Create PPT</a>
+      <a href="block.html" class="nav-link">Diagrams</a>
+      <a href="convert.html" class="nav-link">Image to PPT</a>
+      <a href="edit.html" class="nav-link">Editor</a>
+      <span class="nav-startup-tag">By Remi AI</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Every tool you need to work with <span>PPTs</span></h1>
+    <p>Create, convert, and design stunning presentations — all in one place. 100% free, no signup required.</p>
+    <div class="hero-sub">
+      Powered by <strong>Remi AI</strong> — an AI startup building tools that make your work effortless.
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="cards-section">
+    <div class="cards-grid">
+
+      <a href="ppt.html" class="feature-card card-create">
+        <div class="card-icon-wrap">✨</div>
+        <div class="card-title">Create PPT</div>
+        <div class="card-desc">Paste AI content & generate slides</div>
+      </a>
+
+      <a href="block.html" class="feature-card card-block">
+        <div class="card-icon-wrap">📐</div>
+        <div class="card-title">Mermaid to PPT</div>
+        <div class="card-desc">Create diagrams & export to PPT</div>
+      </a>
+
+      <a href="convert.html" class="feature-card card-convert">
+        <div class="card-icon-wrap">🖼️</div>
+        <div class="card-title">Image to PPT</div>
+        <div class="card-desc">Convert images into slide decks</div>
+      </a>
+
+      <a href="edit.html" class="feature-card card-edit">
+        <div class="card-icon-wrap">🎨</div>
+        <div class="card-title">Advanced Edit</div>
+        <div class="card-desc">Full slide editor with shapes & charts</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="features-strip">
+    <div class="feature-stat">
+      <div class="num">4</div>
+      <div class="label">PPT Tools</div>
+    </div>
+    <div class="feature-stat">
+      <div class="num">12</div>
+      <div class="label">Slide Templates</div>
+    </div>
+    <div class="feature-stat">
+      <div class="num">100%</div>
+      <div class="label">Free & No Signup</div>
+    </div>
+    <div class="feature-stat">
+      <div class="num">7</div>
+      <div class="label">Diagram Types</div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h3>About Remi AI</h3>
+    <p>
+      Remi AI is an AI startup dedicated to building smart, accessible tools that simplify everyday tasks.
+      Prabhas PPT Maker is our flagship product — a comprehensive PowerPoint toolkit that helps students,
+      professionals, and creators build beautiful presentations without any design skills.
+    </p>
+    <div class="about-badges">
+      <span class="about-badge green">🚀 AI-Powered</span>
+      <span class="about-badge">🌐 100% Frontend</span>
+      <span class="about-badge green">📊 12 Templates</span>
+      <span class="about-badge">🔒 No Data Upload</span>
+      <span class="about-badge green">⚡ Instant Results</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    Made with ❤️ by <a href="#">Remi AI</a> · Prabhas PPT Maker © 2025
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://prabhas-ppt-maker.pages.dev/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prabhas PPT Maker</title>
+  <script src="./Prabhas PPT Maker_files/pptxgen.bundle.js.download"></script>
+  <script src="./Prabhas PPT Maker_files/processing.js.download"></script>
+  <script src="./Prabhas PPT Maker_files/tags.js.download" defer=""></script>
+  <script src="./Prabhas PPT Maker_files/templates.js.download" defer=""></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 20px;
+      color: #1f2937;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated Canvas Background */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Coords Display */
+    .coords-display {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+    }
+
+    /* Elements above canvas */
+    .remi-badge,
+    .main-wrapper,
+    .footer-love {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Remi Badge */
+    .remi-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 6px 16px;
+      padding-left: 12px;
+      border-radius: 99px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      animation: fadeInDown 0.8s ease-out;
+      flex-shrink: 0;
+    }
+
+    .badge-logo {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Footer Love */
+    .footer-love {
+      margin-top: auto;
+      padding: 10px 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .main-wrapper {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      padding: 25px 30px;
+      flex: 1;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* Edit Button Styling */
+    .edit-btn-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      padding: 20px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      align-self: center;
+      flex-shrink: 0;
+    }
+
+    .edit-btn-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .edit-btn-card .icon {
+      font-size: 36px;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    .edit-btn-card .arrow {
+      margin-top: 8px;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .edit-btn-card:hover .arrow {
+      transform: translateX(5px);
+      color: #fff;
+    }
+
+    .edit-btn-card .title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+
+    .edit-btn-card .desc {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.75rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1f2937;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .header h1 span {
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .content-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      gap: 12px;
+    }
+
+    textarea {
+      width: 100%;
+      flex: 1;
+      min-height: 120px;
+      padding: 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      background-color: #f9fafb;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      background-color: #fff;
+      box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.1);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px -5px rgba(79, 70, 229, 0.5);
+      background: linear-gradient(135deg, #4338ca 0%, #7e22ce 100%);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+      display: none;
+      animation: fadeIn 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status.loading {
+      display: block;
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fcd34d;
+    }
+
+    .status.success {
+      display: block;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #6ee7b7;
+    }
+
+    .status.error {
+      display: block;
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
+    }
+
+    .tips {
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+      border: 1px solid #e2e8f0;
+      flex-shrink: 0;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px 15px;
+      }
+
+      .main-wrapper {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .edit-btn-card {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        padding: 12px;
+        order: -1;
+      }
+
+      .edit-btn-card .icon {
+        margin-bottom: 0;
+        font-size: 24px;
+      }
+
+      .edit-btn-card .desc {
+        display: none;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .remi-badge {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+      }
+    }
+
+    @media (max-height: 700px) {
+      .tips {
+        display: none;
+      }
+
+      .container {
+        padding: 20px 25px;
+      }
+
+      .header {
+        margin-bottom: 10px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animated Background Canvas -->
+  <canvas id="bgCanvas" width="1280" height="585"></canvas>
+  <div class="coords-display" id="coordsDisplay">-0.17</div>
+
+  <div class="remi-badge">
+    <img src="./Prabhas PPT Maker_files/logo.jpg" alt="Logo" class="badge-logo">
+    A Remi AI Product
+  </div>
+
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="header">
+        <h1><span>Prabhas</span> PPT Maker</h1>
+        <p>Create stunning presentations in seconds</p>
+      </div>
+
+      <div class="content-area">
+        <textarea id="inputText" placeholder="📋 Paste AI-generated content here...
+
+Ask ChatGPT / Gemini / Grok / Claude to create slides like:
+
+&#39;Create a 5-slide PPT on [topic] with:
+- Slide 1: Introduction
+- Slide 2: Types/Categories  
+- Slide 3: Details
+- Slide 4: Examples
+- Slide 5: Conclusion&#39;
+
+The AI will give you structured content with &#39;Slide 1:&#39;, &#39;Slide 2:&#39;, etc.
+Just paste that here and click Generate!"></textarea>
+
+        <button class="btn" id="generateBtn">✨ Generate Presentation</button>
+
+        <div class="status" id="status"></div>
+
+        <div class="tips">
+          <strong>🤖 AI Content Only:</strong> Paste content from ChatGPT, Gemini, Grok, or Claude.
+          Make sure it has <code>Slide 1:</code>, <code>Slide 2:</code> format for best results!
+        </div>
+      </div>
+    </div>
+
+    <a href="https://prabhas-ppt-maker.pages.dev/edit.html" class="edit-btn-card">
+      <span class="icon">🎨</span>
+      <div class="title">Edit Mode</div>
+      <div class="desc">Advanced Tools</div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <div class="footer-love">Made with love by Remi AI</div>
+
+  <script>
+    // Template names
+    var TEMPLATE_LIST = [
+      'HERO_IMAGE_TITLE', 'LEFT_TITLE_FEATURE_CARDS', 'PROCESS_VERTICAL_STACK',
+      'IMAGE_LEFT_BULLETS_RIGHT', 'GRID_REQUIREMENTS', 'FULL_BG_TEXT_OVERLAY',
+      'VALUE_CHAIN_FLOW', 'TEXT_LEFT_IMAGE_RIGHT', 'SOLUTION_CARDS_GRID',
+      'BLOG_CARDS_LAYOUT', 'INSTALLATION_STEPS_CARDS', 'ZIGZAG_PROCESS_STEPS'
+    ];
+
+    // Track used templates
+    var templateTracker = {};
+
+    function resetTemplates() {
+      templateTracker = {};
+    }
+
+    function pickTemplate(slide, idx) {
+      var count = (slide.items || []).length;
+      var suggested = slide.suggested_template || null;
+      var contentType = slide.content_type || 'bullets';
+
+      // First slide = always title
+      if (idx === 0) {
+        templateTracker['HERO_IMAGE_TITLE'] = true;
+        return AI_TEMPLATES.HERO_IMAGE_TITLE;
+      }
+
+      // Content type to template mapping (matches backend rules)
+      var typeTemplates = {
+        'title': ['HERO_IMAGE_TITLE', 'FULL_BG_TEXT_OVERLAY'],
+        'thankyou': ['FULL_BG_TEXT_OVERLAY', 'HERO_IMAGE_TITLE'],
+        'conclusion': ['TEXT_LEFT_IMAGE_RIGHT', 'LEFT_TITLE_FEATURE_CARDS'],
+        'agenda': ['PROCESS_VERTICAL_STACK', 'VALUE_CHAIN_FLOW'],
+        'process': ['PROCESS_VERTICAL_STACK', 'ZIGZAG_PROCESS_STEPS', 'VALUE_CHAIN_FLOW'],
+        'features': ['LEFT_TITLE_FEATURE_CARDS', 'SOLUTION_CARDS_GRID', 'TEXT_LEFT_IMAGE_RIGHT'],
+        'grid': ['GRID_REQUIREMENTS', 'INSTALLATION_STEPS_CARDS', 'BLOG_CARDS_LAYOUT'],
+        'comparison': ['VALUE_CHAIN_FLOW', 'SOLUTION_CARDS_GRID', 'GRID_REQUIREMENTS'],
+        'cards': ['SOLUTION_CARDS_GRID', 'LEFT_TITLE_FEATURE_CARDS', 'BLOG_CARDS_LAYOUT'],
+        'bullets': ['IMAGE_LEFT_BULLETS_RIGHT', 'TEXT_LEFT_IMAGE_RIGHT', 'PROCESS_VERTICAL_STACK'],
+        'paragraph': ['FULL_BG_TEXT_OVERLAY', 'IMAGE_LEFT_BULLETS_RIGHT', 'TEXT_LEFT_IMAGE_RIGHT'],
+        'textimage': ['TEXT_LEFT_IMAGE_RIGHT', 'IMAGE_LEFT_BULLETS_RIGHT', 'LEFT_TITLE_FEATURE_CARDS']
+      };
+
+      // Get templates for this content type
+      var options = typeTemplates[contentType] || typeTemplates['bullets'];
+
+      // Try to use suggested template first if not used
+      if (suggested && !templateTracker[suggested] && AI_TEMPLATES[suggested]) {
+        templateTracker[suggested] = true;
+        console.log('  Using suggested:', suggested, 'for type:', contentType);
+        return AI_TEMPLATES[suggested];
+      }
+
+      // Find unused template from options
+      for (var i = 0; i < options.length; i++) {
+        var name = options[i];
+        if (!templateTracker[name] && AI_TEMPLATES[name]) {
+          templateTracker[name] = true;
+          console.log('  Using option:', name, 'for type:', contentType);
+          return AI_TEMPLATES[name];
+        }
+      }
+
+      // Reset if running low on templates
+      var usedCount = Object.keys(templateTracker).length;
+      if (usedCount >= TEMPLATE_LIST.length - 2) {
+        templateTracker = { 'HERO_IMAGE_TITLE': true };
+      }
+
+      // Any unused from full list
+      for (var j = 0; j < TEMPLATE_LIST.length; j++) {
+        var n = TEMPLATE_LIST[j];
+        if (!templateTracker[n] && AI_TEMPLATES[n]) {
+          templateTracker[n] = true;
+          return AI_TEMPLATES[n];
+        }
+      }
+
+      return AI_TEMPLATES.TEXT_LEFT_IMAGE_RIGHT;
+    }
+
+    function showStatus(msg, type) {
+      var el = document.getElementById('status');
+      el.textContent = msg;
+      el.className = 'status ' + type;
+    }
+
+    // ========== ANIMATED BACKGROUND (Blue Gradient + White Arcs) ==========
+    (function initBackground() {
+      const canvas = document.getElementById('bgCanvas');
+      const ctx = canvas.getContext('2d');
+      const coordsEl = document.getElementById('coordsDisplay');
+
+      let width, height;
+      let arcs = [];
+      let time = 0;
+      let gradientOffset = 0;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initArcs();
+      }
+
+      function initArcs() {
+        arcs = [];
+        // Create 4 thin arc lines for a cleaner look
+        for (let i = 0; i < 4; i++) {
+          arcs.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: 100 + Math.random() * 300,
+            startAngle: Math.random() * Math.PI * 2,
+            speed: 0.002 + Math.random() * 0.005,
+            lineWidth: 1 + Math.random() * 1.5,
+            direction: Math.random() > 0.5 ? 1 : -1,
+            // Coordinate label for this arc
+            showCoord: Math.random() > 0.5,
+            coordValue: (Math.random() * 2 - 1).toFixed(2)
+          });
+        }
+      }
+
+      function draw() {
+        time += 0.015;
+        gradientOffset = (gradientOffset + 0.002) % 1;
+
+        // Draw blue/cyan gradient background
+        const gradient = ctx.createLinearGradient(
+          width * (0.3 + Math.sin(time * 0.2) * 0.2), 0,
+          width * (0.7 + Math.cos(time * 0.15) * 0.3), height
+        );
+        gradient.addColorStop(0, '#3b82f6');      // Blue
+        gradient.addColorStop(0.3, '#38bdf8');    // Sky blue
+        gradient.addColorStop(0.6, '#67e8f9');    // Cyan
+        gradient.addColorStop(0.8, '#a78bfa');    // Purple hint
+        gradient.addColorStop(1, '#60a5fa');      // Light blue
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        // Draw white thin arcs
+        arcs.forEach((arc, i) => {
+          arc.startAngle += arc.speed * arc.direction;
+
+          // Slow movement
+          arc.x += Math.sin(time * 0.5 + i) * 0.15;
+          arc.y += Math.cos(time * 0.3 + i * 0.7) * 0.15;
+
+          // Wrap around
+          if (arc.x < -arc.radius) arc.x = width + arc.radius;
+          if (arc.x > width + arc.radius) arc.x = -arc.radius;
+          if (arc.y < -arc.radius) arc.y = height + arc.radius;
+          if (arc.y > height + arc.radius) arc.y = -arc.radius;
+
+          // Draw white thin arc
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+          ctx.lineWidth = arc.lineWidth;
+          ctx.beginPath();
+          ctx.arc(arc.x, arc.y, arc.radius, arc.startAngle, arc.startAngle + Math.PI * 0.7);
+          ctx.stroke();
+
+          // Draw coordinate label at arc end
+          if (arc.showCoord) {
+            const endX = arc.x + Math.cos(arc.startAngle + Math.PI * 0.35) * arc.radius;
+            const endY = arc.y + Math.sin(arc.startAngle + Math.PI * 0.35) * arc.radius;
+
+            // Update coord value slowly
+            arc.coordValue = (Math.sin(time + i * 2) * 0.99).toFixed(2);
+
+            ctx.font = '12px Courier New';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.fillText(arc.coordValue, endX + 5, endY);
+          }
+        });
+
+        // Also draw some straight thin lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 3; i++) {
+          const y = height * (0.2 + i * 0.3) + Math.sin(time + i) * 20;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y + Math.sin(time * 2) * 30);
+          ctx.stroke();
+        }
+
+        // Update main coords display
+        const coord1 = (Math.sin(time) * 0.99).toFixed(2);
+        const coord2 = (Math.cos(time * 0.7) * 0.99).toFixed(2);
+        coordsEl.textContent = `${coord1 >= 0 ? '' : ''}${coord1}`;
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+
+    // ========== WELCOME ALERT ==========
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        alert('🤖 Welcome to Prabhas PPT Maker!\n\n📋 You can paste content from ANY AI tool here!\n(ChatGPT, Gemini, Claude, etc.)\n\nJust make sure it has "Slide 1:", "Slide 2:" format.');
+      }, 500);
+    });
+
+    // ========== GENERATE PPT (Frontend-Only) ==========
+    document.getElementById('generateBtn').onclick = async function () {
+      var btn = this;
+      var text = document.getElementById('inputText').value;
+
+      if (!text.trim()) {
+        alert('Please enter some content!');
+        return;
+      }
+
+      try {
+        btn.disabled = true;
+        showStatus('🔍 Analyzing content...', 'loading');
+
+        // Use frontend processing (no backend needed!)
+        var data = window.processContent(text);
+
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        console.log('Processed:', data.slides.length, 'slides');
+
+        if (!data.slides || data.slides.length === 0) {
+          throw new Error('No slides detected. Make sure content has "Slide 1:", "Slide 2:", etc.');
+        }
+
+        showStatus('🎨 Creating ' + data.slides.length + ' slides...', 'loading');
+
+        // Reset tracking
+        resetAssetTracking();
+        resetColors();
+        resetTemplates();
+
+        var pptx = new PptxGenJS();
+        pptx.layout = 'LAYOUT_16x9';
+
+        for (var i = 0; i < data.slides.length; i++) {
+          var slide = data.slides[i];
+          var template = pickTemplate(slide, i);
+
+          console.log('Slide ' + (i + 1) + ': ' + slide.title + ' -> ' + template.name);
+
+          var bg = getBackgroundImage(slide.keywords || []);
+          var icons = getIcons(slide.keywords || [], 4);
+
+          template.build(pptx, slide, {
+            bg: bg,
+            icons: icons
+          });
+        }
+        showStatus('📥 Generating file...', 'loading');
+
+        await pptx.writeFile({ fileName: 'Prabhas_Presentation.pptx' });
+
+        showStatus('✅ Done! ' + data.slides.length + ' slides created.', 'success');
+
+      } catch (err) {
+        console.error('Error:', err);
+        showStatus('❌ ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+      }
+    };
+  </script>
+
+
+
+</body></html>

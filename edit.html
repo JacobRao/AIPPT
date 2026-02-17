@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Editor - Prabhas PPT Maker</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            background: #f3f4f6;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #1f2937;
+        }
+
+        .top-actions {
+            height: 60px;
+            padding: 0 20px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            z-index: 20;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 60px);
+            overflow: hidden;
+        }
+
+        /* LEFT PANEL */
+        .left-panel {
+            width: 40%;
+            background: #fff;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            z-index: 10;
+            flex-shrink: 0;
+            transition: height 0.3s ease;
+        }
+
+        .tools-strip {
+            width: 60px;
+            background: #f9fafb;
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            flex-shrink: 0;
+        }
+
+        .config-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .config-header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+            background: #fff;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expand-btn {
+            display: none;
+            padding: 4px 8px;
+            font-size: 12px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .config-fields {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        /* RIGHT PANEL */
+        .editor-area {
+            width: 60%;
+            background: #e5e5e5;
+            position: relative;
+            overflow: auto;
+            /* Enable Scroll */
+            display: grid;
+            place-items: center;
+            /* Center content initially */
+            padding: 20px;
+        }
+
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            opacity: 0.9;
+        }
+
+        .zoom-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zoom-btn:hover {
+            background: #f3f4f6;
+        }
+
+        /* Wrapper handles sizing for scroll */
+        .canvas-wrapper {
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+            background: white;
+            transform-origin: 0 0;
+            overflow: hidden;
+        }
+
+        .slide-canvas {
+            width: 960px;
+            height: 540px;
+            background: white;
+            position: relative;
+        }
+
+        /* UI Helpers */
+        .tool-icon-btn {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: #6b7280;
+        }
+
+        .tool-icon-btn:hover {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .tool-icon-btn.active {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        input[type="color"] {
+            width: 35px;
+            height: 35px;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .row-flex {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .row-flex>* {
+            flex: 1;
+        }
+
+        .row-flex input[type="color"] {
+            flex: 0 0 35px;
+        }
+
+        .preview-table {
+            width: 90%;
+            margin: 40px auto;
+            border-collapse: collapse;
+        }
+
+        .preview-table td,
+        .preview-table th {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        .diagram-node {
+            position: absolute;
+            padding: 10px;
+            text-align: center;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagram-arrow {
+            position: absolute;
+            height: 4px;
+            background: #374151;
+            transform-origin: 0 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .diagram-arrow::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -6px;
+            border-left: 10px solid #374151;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .chart-container {
+            position: absolute;
+            left: 80px;
+            bottom: 80px;
+        }
+
+        .chart-axis-lines {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-left: 2px solid #333;
+            border-bottom: 2px solid #333;
+        }
+
+        .chart-axis-lines::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -6px;
+            border-bottom: 10px solid #333;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .chart-axis-lines::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            bottom: -6px;
+            border-left: 10px solid #333;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            background: #3B82F6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .bar-tooltip {
+            position: absolute;
+            top: -20px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 100px;
+            text-align: center;
+        }
+
+        .bar-axis-lbl {
+            position: absolute;
+            bottom: -25px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 100px;
+            text-align: center;
+        }
+
+        .axis-title {
+            position: absolute;
+            font-weight: bold;
+            font-size: 14px;
+            color: #111;
+        }
+
+        .tick-mark {
+            position: absolute;
+            width: 6px;
+            height: 1px;
+            background: #333;
+            left: -6px;
+        }
+
+        .tick-label {
+            position: absolute;
+            font-size: 11px;
+            width: 40px;
+            text-align: right;
+            left: -46px;
+            transform: translateY(50%);
+        }
+
+        .origin-zero {
+            position: absolute;
+            left: -25px;
+            bottom: -20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* MOBILE RESPONSIVE - FIXED */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                position: relative;
+            }
+
+            .left-panel {
+                width: 100%;
+                height: 240px;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                flex-direction: column;
+                z-index: 50;
+                background: #fff;
+                transition: height 0.3s ease, box-shadow 0.3s;
+            }
+
+            .left-panel.expanded {
+                position: absolute;
+                /* Float over */
+                top: 0;
+                left: 0;
+                height: 85vh;
+                /* Expanded Size */
+                border-bottom: 2px solid #ccc;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            }
+
+            .tools-strip {
+                width: 100%;
+                height: 50px;
+                flex-direction: row;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-top: 0;
+                justify-content: space-evenly;
+                flex-shrink: 0;
+            }
+
+            .config-content {
+                width: 100%;
+                flex: 1;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .config-fields {
+                flex: 1;
+                overflow-y: auto;
+            }
+
+            .tool-icon-btn {
+                margin-bottom: 0;
+            }
+
+            .expand-btn {
+                display: block;
+            }
+
+            .editor-area {
+                width: 100%;
+                flex: 1;
+                display: block;
+                margin-top: 0;
+            }
+
+            .canvas-wrapper {
+                margin: 20px auto;
+            }
+
+            .top-actions {
+                padding: 0 10px;
+            }
+
+            .top-actions h3 {
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .zoom-controls {
+                bottom: 10px;
+                right: 10px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-actions">
+        <div style="display:flex; align-items:center; gap:20px">
+            <a href="index.html" style="text-decoration:none; color:#4b5563; font-weight:600">← Back</a>
+            <h3 style="margin:0" id="toolHeading">Table Editor</h3>
+        </div>
+        <div><button class="btn" style="background:#10b981; color:white; font-size:14px; padding:8px 16px"
+                onclick="downloadImage()">📸 Download Image</button></div>
+    </div>
+
+    <div class="main-container">
+        <div class="left-panel" id="leftPanel">
+            <div class="tools-strip">
+                <button class="tool-icon-btn active" onclick="setTool('table')" title="Table">📊</button>
+                <button class="tool-icon-btn" onclick="setTool('pie')" title="Pie Chart">🍩</button>
+                <button class="tool-icon-btn" onclick="setTool('diagram')" title="Diagram">🔄</button>
+                <button class="tool-icon-btn" onclick="setTool('stats')" title="Statistics">📈</button>
+            </div>
+            <div class="config-content">
+                <div class="config-header">
+                    <span>Configuration</span>
+                    <button class="expand-btn" onclick="toggleExpand()">↕ Expand</button>
+                </div>
+                <div class="config-fields" id="configPanel"></div>
+            </div>
+        </div>
+        <div class="editor-area">
+            <div id="canvasWrapper" class="canvas-wrapper">
+                <div id="slidePreview" class="slide-canvas"></div>
+            </div>
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="updateZoom(-0.1)">-</button>
+                <span id="zoomLevel">60%</span>
+                <button class="zoom-btn" onclick="updateZoom(0.1)">+</button>
+                <button class="zoom-btn" onclick="resetZoom()"
+                    style="width: auto; padding: 0 8px; font-size: 12px">Fit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTool = 'table';
+        let zoom = 0.6;
+
+        // Toggle Logic
+        let isExpanded = false;
+        function toggleExpand() {
+            const p = document.getElementById('leftPanel');
+            const btn = document.querySelector('.expand-btn');
+            isExpanded = !isExpanded;
+            if (isExpanded) { p.classList.add('expanded'); btn.innerText = '↓ Collapse'; }
+            else { p.classList.remove('expanded'); btn.innerText = '↕ Expand'; }
+        }
+
+        const data = {
+            table: { rows: 4, cols: 4, rowColor: '#f3f4f6', colColor: '#ffffff' },
+            pie: { items: [{ label: 'A', value: 30, color: '#3B82F6', desc: 'Part A' }] },
+            diagram: { nodes: [], arrows: [] },
+            stats: { xStart: 2000, xEnd: 2025, yStart: 0, yEnd: 100, xLabel: 'Years', yLabel: 'Rate', barWidth: 40, items: [{ label: '2005', pos: 2005, height: 60, color: '#3B82F6' }] }
+        };
+        const PALETTE = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899', '#6366F1', '#14B8A6'];
+        function getNextColor(used) { return PALETTE.find(c => !used.includes(c)) || '#' + Math.floor(Math.random() * 16777215).toString(16); }
+
+        function setTool(tool) { currentTool = tool; document.querySelectorAll('.tool-icon-btn').forEach(b => b.classList.remove('active')); event.target.classList.add('active'); const titles = { table: 'Table Editor', pie: 'Pie Chart Editor', diagram: 'Diagram Editor', stats: 'Statistics Editor' }; document.getElementById('toolHeading').textContent = titles[tool]; renderConfig(); renderPreview(); }
+
+        function updateZoom(delta) { zoom = Math.max(0.2, Math.min(3.0, zoom + delta)); applyZoom(); }
+        function resetZoom() {
+            const area = document.querySelector('.editor-area');
+            const availW = area.clientWidth - 40;
+            zoom = availW / 960;
+            if (zoom > 1) zoom = 1;
+            applyZoom();
+        }
+        function applyZoom() {
+            const wrapper = document.getElementById('canvasWrapper');
+            const canvas = document.getElementById('slidePreview');
+            wrapper.style.width = (960 * zoom) + 'px';
+            wrapper.style.height = (540 * zoom) + 'px';
+            canvas.style.transform = `scale(${zoom})`;
+            canvas.style.transformOrigin = '0 0';
+            document.getElementById('zoomLevel').textContent = Math.round(zoom * 100) + '%';
+        }
+        window.onload = null;
+        window.onresize = resetZoom;
+
+        function renderConfig() {
+            const p = document.getElementById('configPanel'); p.innerHTML = '';
+            if (currentTool === 'table') {
+                p.innerHTML = `<div class="control-group"><label>Grid Size</label><div class="row-flex"><input type="number" value="${data.table.rows}" onchange="data.table.rows=parseInt(this.value); renderPreview()"> Rows</div><div class="row-flex"><input type="number" value="${data.table.cols}" onchange="data.table.cols=parseInt(this.value); renderPreview()"> Cols</div></div><div class="control-group"><label>Colors</label><div class="row-flex"><input type="color" value="${data.table.rowColor}" onchange="data.table.rowColor=this.value; renderPreview()"> Header</div><div class="row-flex"><input type="color" value="${data.table.colColor}" onchange="data.table.colColor=this.value; renderPreview()"> Cells</div></div>`;
+            }
+            else if (currentTool === 'pie') {
+                p.innerHTML = `<button class="btn btn-primary" onclick="addPieItem()">+ Add Slice</button>`;
+                data.pie.items.forEach((item, i) => { p.innerHTML += `<div class="control-group"><div style="display:flex; justify-content:space-between; margin-bottom:5px"><label>Slice ${i + 1}</label> <span style="color:red; cursor:pointer" onclick="removePieItem(${i})">✕</span></div><input type="text" value="${item.label}" placeholder="Label" oninput="data.pie.items[${i}].label=this.value; renderPreview()"><div class="row-flex"><input type="number" value="${item.value}" placeholder="Val" oninput="data.pie.items[${i}].value=parseInt(this.value); renderPreview()"><input type="color" value="${item.color}" oninput="data.pie.items[${i}].color=this.value; renderPreview()"></div><input type="text" value="${item.desc}" placeholder="Arrow Text" oninput="data.pie.items[${i}].desc=this.value; renderPreview()"></div>`; });
+            }
+            else if (currentTool === 'diagram') {
+                p.innerHTML = `<div class="row-flex"><button class="btn" style="flex:1; background:#e5e7eb" onclick="addNode()">+ Box</button> <button class="btn" style="flex:1; background:#e5e7eb" onclick="addArrow()">+ Arrow</button></div>`;
+                data.diagram.nodes.forEach((n, i) => { p.innerHTML += `<div class="control-group"><div style="display:flex; justify-content:space-between; margin-bottom:5px"><label>Box ${i + 1}</label> <span style="color:red; cursor:pointer" onclick="removeNode(${i})">✕</span></div><input type="text" value="${n.text}" oninput="data.diagram.nodes[${i}].text=this.value; renderPreview()"><div class="row-flex"><input type="color" value="${n.color}" oninput="data.diagram.nodes[${i}].color=this.value; renderPreview()"><input type="number" value="${n.w}" oninput="data.diagram.nodes[${i}].w=parseInt(this.value); renderPreview()"><input type="number" value="${n.h}" oninput="data.diagram.nodes[${i}].h=parseInt(this.value); renderPreview()"></div></div>`; });
+                data.diagram.arrows.forEach((a, i) => { p.innerHTML += `<div class="control-group"><div style="display:flex; justify-content:space-between"><label>Arrow ${i + 1}</label> <span style="color:red; cursor:pointer" onclick="removeArrow(${i})">✕</span></div> Rotate: <input type="range" min="0" max="360" value="${a.rot}" oninput="data.diagram.arrows[${i}].rot=parseInt(this.value); renderPreview()"></div>`; });
+            }
+            else if (currentTool === 'stats') {
+                p.innerHTML = `<div class="control-group"><label>Axis Labels</label><div class="row-flex"><input type="text" value="${data.stats.xLabel}" placeholder="X Title" oninput="data.stats.xLabel=this.value; renderPreview()"></div><div class="row-flex"><input type="text" value="${data.stats.yLabel}" placeholder="Y Title" oninput="data.stats.yLabel=this.value; renderPreview()"></div></div>`;
+                p.innerHTML += `<div class="control-group"><label>Axis Range</label><div class="row-flex"><input type="number" value="${data.stats.xStart}" onchange="data.stats.xStart=parseInt(this.value); renderPreview()"> X-Start</div><div class="row-flex"><input type="number" value="${data.stats.xEnd}" onchange="data.stats.xEnd=parseInt(this.value); renderPreview()"> X-End</div><div class="row-flex"><input type="number" value="${data.stats.yStart}" onchange="data.stats.yStart=parseInt(this.value); renderPreview()"> Y-Start</div><div class="row-flex"><input type="number" value="${data.stats.yEnd}" onchange="data.stats.yEnd=parseInt(this.value); renderPreview()"> Y-End</div></div><div class="control-group"><label>Style</label><div class="row-flex"><input type="number" value="${data.stats.barWidth}" onchange="data.stats.barWidth=parseInt(this.value); renderPreview()"> Bar Width</div></div><button class="btn btn-primary" onclick="addStatsItem()">+ Add Bar</button>`;
+                data.stats.items.forEach((item, i) => { p.innerHTML += `<div class="control-group"><div style="display:flex; justify-content:space-between"><label>Bar ${i + 1}</label> <span style="color:red; cursor:pointer" onclick="removeStatsItem(${i})">✕</span></div><input type="text" placeholder="Label" value="${item.label}" oninput="data.stats.items[${i}].label=this.value; renderPreview()"><div class="row-flex"><div style="flex:2"><input type="number" placeholder="X-Pos" value="${item.pos}" oninput="data.stats.items[${i}].pos=parseFloat(this.value); renderPreview()"></div><div style="flex:2"><input type="number" placeholder="Height" value="${item.height}" oninput="data.stats.items[${i}].height=parseFloat(this.value); renderPreview()"></div><input type="color" value="${item.color}" oninput="data.stats.items[${i}].color=this.value; renderPreview()"></div></div>`; });
+            }
+        }
+
+        function addPieItem() { data.pie.items.push({ label: 'New', value: 10, color: getNextColor(data.pie.items.map(i => i.color)), desc: '' }); renderConfig(); renderPreview(); }
+        function removePieItem(i) { data.pie.items.splice(i, 1); renderConfig(); renderPreview(); }
+        function addNode() { data.diagram.nodes.push({ id: Date.now(), text: 'Box', color: '#3B82F6', x: 50, y: 50, w: 100, h: 60 }); renderConfig(); renderPreview(); }
+        function addArrow() { data.diagram.arrows.push({ id: Date.now(), x: 150, y: 80, len: 100, rot: 0 }); renderConfig(); renderPreview(); }
+        function removeNode(i) { data.diagram.nodes.splice(i, 1); renderConfig(); renderPreview(); }
+        function removeArrow(i) { data.diagram.arrows.splice(i, 1); renderConfig(); renderPreview(); }
+        function addStatsItem() { data.stats.items.push({ label: 'Bar', pos: data.stats.xStart, height: 10, color: getNextColor(data.stats.items.map(i => i.color)) }); renderConfig(); renderPreview(); }
+        function removeStatsItem(i) { data.stats.items.splice(i, 1); renderConfig(); renderPreview(); }
+
+        function renderPreview() {
+            const canvas = document.getElementById('slidePreview'); canvas.innerHTML = '';
+            if (currentTool === 'table') {
+                const table = document.createElement('table'); table.className = 'preview-table';
+                for (let r = 0; r < data.table.rows; r++) { const tr = document.createElement('tr'); tr.style.backgroundColor = r === 0 ? data.table.rowColor : data.table.colColor; for (let c = 0; c < data.table.cols; c++) { const td = document.createElement(r === 0 ? 'th' : 'td'); td.contentEditable = true; td.innerText = r === 0 ? `Head ${c + 1}` : `Cell ${c + 1}`; tr.appendChild(td); } table.appendChild(tr); }
+                canvas.appendChild(table);
+            }
+            else if (currentTool === 'pie') { renderPieChart(canvas); }
+            else if (currentTool === 'diagram') {
+                data.diagram.nodes.forEach(n => { const el = document.createElement('div'); el.className = 'diagram-node'; el.style.left = n.x + 'px'; el.style.top = n.y + 'px'; el.style.width = n.w + 'px'; el.style.height = n.h + 'px'; el.style.backgroundColor = n.color + '20'; el.style.border = `2px solid ${n.color}`; el.innerText = n.text; el.onmousedown = (e) => startDrag(e, n); canvas.appendChild(el); });
+                data.diagram.arrows.forEach(a => { const el = document.createElement('div'); el.className = 'diagram-arrow'; el.style.left = a.x + 'px'; el.style.top = a.y + 'px'; el.style.width = a.len + 'px'; el.style.transform = `rotate(${a.rot}deg)`; el.onmousedown = (e) => startDrag(e, a); canvas.appendChild(el); });
+            }
+            else if (currentTool === 'stats') {
+                const s = data.stats; const W = 700, H = 350;
+                const cont = document.createElement('div'); cont.className = 'chart-container'; cont.style.width = W + 'px'; cont.style.height = H + 'px';
+                const lines = document.createElement('div'); lines.className = 'chart-axis-lines'; lines.style.width = '100%'; lines.style.height = '100%'; cont.appendChild(lines);
+                const yTitle = document.createElement('div'); yTitle.className = 'axis-title'; yTitle.innerText = s.yLabel; yTitle.style.top = '-30px'; yTitle.style.left = '-10px';
+                const xTitle = document.createElement('div'); xTitle.className = 'axis-title'; xTitle.innerText = s.xLabel; xTitle.style.bottom = '-6px'; xTitle.style.right = '-60px';
+                cont.append(yTitle, xTitle);
+                const yRange = s.yEnd - s.yStart;
+                for (let i = 0; i <= 10; i++) {
+                    const yVal = s.yStart + (yRange * i / 10);
+                    const yPct = (i / 10) * 100;
+                    const tick = document.createElement('div'); tick.className = 'tick-mark'; tick.style.bottom = yPct + '%';
+                    const lbl = document.createElement('div'); lbl.className = 'tick-label'; lbl.style.bottom = yPct + '%';
+                    lbl.innerText = Math.round(yVal * 10) / 10;
+                    lines.append(tick, lbl);
+                }
+                const xRange = s.xEnd - s.xStart;
+                s.items.forEach(item => {
+                    if (xRange === 0 || yRange === 0) return;
+                    const relX = item.pos - s.xStart; const pxLeft = (relX / xRange) * W; const pxHeight = (item.height / yRange) * H;
+                    const bar = document.createElement('div'); bar.className = 'chart-bar'; bar.style.left = pxLeft + 'px';
+                    bar.style.marginLeft = -(s.barWidth / 2) + 'px';
+                    bar.style.width = s.barWidth + 'px'; bar.style.height = pxHeight + 'px'; bar.style.backgroundColor = item.color;
+                    const tip = document.createElement('div'); tip.className = 'bar-tooltip'; tip.innerText = item.label;
+                    const val = document.createElement('div'); val.className = 'bar-axis-lbl'; val.innerText = item.pos;
+                    bar.append(tip, val); cont.appendChild(bar);
+                });
+                canvas.appendChild(cont);
+            }
+        }
+
+        function renderPieChart(c) {
+            const w = 960, h = 540, cx = 480, cy = 270, r = 150;
+            let svg = `<svg width="${w}" height="${h}" style="position:absolute;top:0;left:0"><defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#333"/></marker></defs>`;
+            let total = data.pie.items.reduce((a, b) => a + (b.value || 0), 0); let start = 0;
+            data.pie.items.forEach(i => {
+                const val = i.value || 0; const ang = (val / total) * 360; const large = ang > 180 ? 1 : 0; const rad = Math.PI / 180;
+                const x1 = cx + r * Math.cos(start * rad), y1 = cy + r * Math.sin(start * rad); const x2 = cx + r * Math.cos((start + ang) * rad), y2 = cy + r * Math.sin((start + ang) * rad);
+                svg += `<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} Z" fill="${i.color}" />`;
+                if (i.desc) { const mid = start + ang / 2; const tx = cx + (r + 80) * Math.cos(mid * rad), ty = cy + (r + 80) * Math.sin(mid * rad); const ax = cx + (r + 10) * Math.cos(mid * rad), ay = cy + (r + 10) * Math.sin(mid * rad); svg += `<line x1="${tx}" y1="${ty}" x2="${ax}" y2="${ay}" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/><text x="${tx}" y="${ty}" font-family="Arial" font-size="14" font-weight="bold" alignment-baseline="middle" text-anchor="${mid > 90 && mid < 270 ? 'end' : 'start'}">${i.desc}</text>`; }
+                start += ang;
+            }); svg += '</svg>'; c.innerHTML += svg;
+        }
+
+        let dragObj = null; let offset = { x: 0, y: 0 };
+        function startDrag(e, obj) { dragObj = obj; e.preventDefault(); const r = e.target.getBoundingClientRect(); offset.x = (e.clientX - r.left) / zoom; offset.y = (e.clientY - r.top) / zoom; window.addEventListener('mousemove', onDrag); window.addEventListener('mouseup', stopDrag); }
+        function onDrag(e) { if (!dragObj) return; const c = document.getElementById('slidePreview').getBoundingClientRect(); dragObj.x = (e.clientX - c.left) / zoom - offset.x; dragObj.y = (e.clientY - c.top) / zoom - offset.y; renderPreview(); }
+        function stopDrag() { dragObj = null; window.removeEventListener('mousemove', onDrag); window.removeEventListener('mouseup', stopDrag); }
+        function downloadImage() { html2canvas(document.getElementById('slidePreview'), { scale: 2 }).then(c => { const a = document.createElement('a'); a.download = 'slide.png'; a.href = c.toDataURL(); a.click(); }); }
+
+        window.addEventListener('DOMContentLoaded', () => { resetZoom(); renderConfig(); renderPreview(); });
+    </script>
+</body>
+
+</html>

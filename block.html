@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Diagram - Prabhas PPT Maker</title>
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Outfit', 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page-wrapper {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .top-bar {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-3px);
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .page-title span {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-card {
+            width: 100%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 24px;
+            animation: fadeInUp 0.8s ease-out;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Templates Bar */
+        .templates-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            flex-shrink: 0;
+        }
+
+        .template-chip {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .template-chip:hover,
+        .template-chip.active {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: #6ee7b7;
+        }
+
+        /* Split Layout */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .editor-panel,
+        .preview-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .panel-header {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        /* Code Editor */
+        .code-editor {
+            flex: 1;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 16px;
+            color: #a5f3fc;
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            tab-size: 4;
+            min-height: 300px;
+        }
+
+        .code-editor:focus {
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Preview */
+        .preview-container {
+            flex: 1;
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .preview-container svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .preview-placeholder {
+            color: #9ca3af;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Bottom Controls */
+        .bottom-controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            color: #fff;
+            flex: 1;
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .status {
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            display: none;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .status.loading {
+            display: block;
+            background: rgba(245, 158, 11, 0.15);
+            color: #fcd34d;
+        }
+
+        .status.success {
+            display: block;
+            background: rgba(16, 185, 129, 0.15);
+            color: #6ee7b7;
+        }
+
+        .status.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+        }
+
+        /* Syntax Help */
+        .syntax-help {
+            margin-top: 12px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            flex-shrink: 0;
+        }
+
+        .syntax-help code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: #a5f3fc;
+            font-size: 11px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .templates-bar {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="page-wrapper">
+        <div class="top-bar">
+            <a href="index.html" class="back-btn">← Back to Home</a>
+            <a href="index.html" class="back-btn">← Back to Home</a>
+            <div class="page-title">📐 <span>Diagram to Image</span></div>
+        </div>
+
+        <div class="main-card">
+            <!-- Template Chips -->
+            <div class="templates-bar">
+                <button class="template-chip active" data-template="flowchart">📊 Flowchart</button>
+                <button class="template-chip" data-template="sequence">🔄 Sequence</button>
+                <button class="template-chip" data-template="classDiag">🏗️ Class Diagram</button>
+                <button class="template-chip" data-template="stateDiag">⚡ State Diagram</button>
+                <button class="template-chip" data-template="mindmap">🧠 Mind Map</button>
+                <button class="template-chip" data-template="block">📦 Block Diagram</button>
+                <button class="template-chip" data-template="er">🗄️ ER Diagram</button>
+            </div>
+
+            <!-- Split: Editor + Preview -->
+            <div class="split-layout">
+                <div class="editor-panel">
+                    <div class="panel-header">📝 Code Editor</div>
+                    <textarea class="code-editor" id="codeEditor" spellcheck="false">graph TD
+    A[🎯 Start] --> B{Decision?}
+    B -->|Yes| C[✅ Process A]
+    B -->|No| D[📋 Process B]
+    C --> E[📊 Result]
+    D --> E
+    E --> F[🏁 End]
+
+    style A fill:#4f46e5,color:#fff,stroke:#4f46e5
+    style F fill:#10b981,color:#fff,stroke:#10b981
+    style B fill:#f59e0b,color:#fff,stroke:#f59e0b</textarea>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="panel-header">👁️ Live Preview</div>
+                    <div class="preview-container" id="previewContainer">
+                        <div class="preview-placeholder">Type Mermaid code on the left to see preview...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Controls -->
+            <div class="bottom-controls">
+                <button class="btn btn-secondary" id="renderBtn">🔄 Render Preview</button>
+                <button class="btn btn-secondary" id="magicColorBtn"
+                    style="background:rgba(139, 92, 246, 0.2); border-color:rgba(139, 92, 246, 0.4); color:#a78bfa;">✨
+                    Magic Color</button>
+                <button class="btn btn-primary" id="exportBtn">📸 Download Image</button>
+            </div>
+
+            <div class="status" id="status"></div>
+
+            <!-- Syntax Help -->
+            <div class="syntax-help">
+                💡 <strong>Mermaid Syntax:</strong>
+                Use <code>graph TD</code> for top-down, <code>graph LR</code> for left-right.
+                Shapes: <code>[Rectangle]</code> <code>{Diamond}</code> <code>(Rounded)</code> <code>((Circle))</code>.
+                Arrows: <code>--></code> <code>-.->]</code> <code>==></code>. Labels: <code>-->|text|</code>.
+                Style: <code>style NodeId fill:#color,color:#text</code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Mermaid Init =====
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: { curve: 'basis', padding: 20, htmlLabels: false }
+        });
+
+        const codeEditor = document.getElementById('codeEditor');
+        const previewContainer = document.getElementById('previewContainer');
+        const renderBtn = document.getElementById('renderBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const magicColorBtn = document.getElementById('magicColorBtn');
+        const statusEl = document.getElementById('status');
+
+        // ===== Templates =====
+        const TEMPLATES = {
+            flowchart: `graph TD
+    A[🎯 Start] --> B{Decision?}
+    B -->|Yes| C[✅ Process A]
+    B -->|No| D[📋 Process B]
+    C --> E[📊 Result]
+    D --> E
+    E --> F[🏁 End]
+
+    style A fill:#4f46e5,color:#fff,stroke:#4f46e5
+    style F fill:#10b981,color:#fff,stroke:#10b981
+    style B fill:#f59e0b,color:#fff,stroke:#f59e0b`,
+
+            sequence: `sequenceDiagram
+    participant U as 👤 User
+    participant S as 🖥️ Server
+    participant D as 🗄️ Database
+
+    U->>S: Send Request
+    activate S
+    S->>D: Query Data
+    activate D
+    D-->>S: Return Results
+    deactivate D
+    S-->>U: Send Response
+    deactivate S
+    U->>S: Acknowledge`,
+
+            classDiag: `classDiagram
+    class Animal {
+        +String name
+        +int age
+        +makeSound()
+    }
+    class Dog {
+        +String breed
+        +fetch()
+        +bark()
+    }
+    class Cat {
+        +String color
+        +purr()
+        +scratch()
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat`,
+
+            stateDiag: `stateDiagram-v2
+    [*] --> Idle
+    Idle --> Processing: Start
+    Processing --> Success: Complete
+    Processing --> Error: Fail
+    Success --> Idle: Reset
+    Error --> Processing: Retry
+    Error --> Idle: Cancel`,
+
+            mindmap: `mindmap
+    root((📚 Project))
+        Frontend
+            HTML
+            CSS
+            JavaScript
+        Backend
+            Node.js
+            Python
+            Database
+        DevOps
+            CI/CD
+            Docker
+            Cloud`,
+
+            block: `graph LR
+    A[📥 Input] --> B[⚙️ Process 1]
+    B --> C[⚙️ Process 2]
+    C --> D[⚙️ Process 3]
+    D --> E[📤 Output]
+
+    style A fill:#3b82f6,color:#fff,stroke:#3b82f6
+    style B fill:#8b5cf6,color:#fff,stroke:#8b5cf6
+    style C fill:#ec4899,color:#fff,stroke:#ec4899
+    style D fill:#f59e0b,color:#fff,stroke:#f59e0b
+    style E fill:#10b981,color:#fff,stroke:#10b981`,
+
+            er: `erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE_ITEM : contains
+    CUSTOMER {
+        int id PK
+        string name
+        string email
+    }
+    ORDER {
+        int id PK
+        date created
+        string status
+    }
+    LINE_ITEM {
+        int id PK
+        int quantity
+        float price
+    }`
+        };
+
+        // Template chip click handlers
+        document.querySelectorAll('.template-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('.template-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                const tmpl = chip.dataset.template;
+                if (TEMPLATES[tmpl]) {
+                    codeEditor.value = TEMPLATES[tmpl];
+                    renderDiagram();
+                }
+            });
+        });
+
+        // ===== Render Diagram =====
+        let renderCounter = 0;
+
+        async function renderDiagram() {
+            const code = codeEditor.value.trim();
+            if (!code) {
+                previewContainer.innerHTML = '<div class="preview-placeholder">Type Mermaid code to see preview...</div>';
+                return;
+            }
+
+            try {
+                renderCounter++;
+                const id = 'mermaid-' + renderCounter;
+                const { svg } = await mermaid.render(id, code);
+                previewContainer.innerHTML = svg;
+                showStatus('', '');
+            } catch (err) {
+                console.error('Render error:', err);
+                previewContainer.innerHTML = '<div class="preview-placeholder" style="color:#fca5a5;">⚠️ Syntax error — check your Mermaid code</div>';
+            }
+        }
+
+        renderBtn.addEventListener('click', renderDiagram);
+
+        // Auto-render on typing (debounced)
+        let renderTimeout;
+        codeEditor.addEventListener('input', () => {
+            clearTimeout(renderTimeout);
+            renderTimeout = setTimeout(renderDiagram, 600);
+        });
+
+        // Initial render
+        setTimeout(renderDiagram, 500);
+
+        // ===== Tab key support in editor =====
+        codeEditor.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = codeEditor.selectionStart;
+                const end = codeEditor.selectionEnd;
+                codeEditor.value = codeEditor.value.substring(0, start) + '    ' + codeEditor.value.substring(end);
+                codeEditor.selectionStart = codeEditor.selectionEnd = start + 4;
+            }
+        });
+
+        function showStatus(msg, type) {
+            statusEl.textContent = msg;
+            statusEl.className = 'status' + (type ? ' ' + type : '');
+        }
+
+        // ===== Magic Color =====
+        magicColorBtn.addEventListener('click', () => {
+            let code = codeEditor.value;
+            // Simple regex to find nodes in flowchart: A[Label], B{Label}, C(Label), D((Label)), E>Label], F([Label])
+            // excluding lines that already have "style"
+            const nodeRegex = /([A-Za-z0-9_]+)\s*(?:\[|\{|\(|\>|\[\/|\(\[)/g;
+            const nodes = new Set();
+            let match;
+            while ((match = nodeRegex.exec(code)) !== null) {
+                nodes.add(match[1]);
+            }
+
+            if (nodes.size === 0) {
+                showStatus('⚠️ No nodes found to color', 'error');
+                return;
+            }
+
+            // Define palette
+            const palette = [
+                'fill:#3b82f6,color:#fff,stroke:#3b82f6', // Blue
+                'fill:#10b981,color:#fff,stroke:#10b981', // Green
+                'fill:#f59e0b,color:#fff,stroke:#f59e0b', // Yellow/Orange
+                'fill:#ec4899,color:#fff,stroke:#ec4899', // Pink
+                'fill:#8b5cf6,color:#fff,stroke:#8b5cf6', // Purple
+                'fill:#ef4444,color:#fff,stroke:#ef4444', // Red
+                'fill:#06b6d4,color:#fff,stroke:#06b6d4'  // Cyan
+            ];
+
+            // Check existing styles to avoid re-styling
+            const existingStyles = new Set();
+            const styleRegex = /style\s+([A-Za-z0-9_]+)/g;
+            while ((match = styleRegex.exec(code)) !== null) {
+                existingStyles.add(match[1]);
+            }
+
+            let addedCount = 0;
+            let styleBlock = '\n\n    %% Auto-generated colors\n';
+            let pIdx = 0;
+
+            nodes.forEach(node => {
+                if (!existingStyles.has(node)) {
+                    styleBlock += `    style ${node} ${palette[pIdx % palette.length]}\n`;
+                    pIdx++;
+                    addedCount++;
+                }
+            });
+
+            if (addedCount > 0) {
+                codeEditor.value += styleBlock;
+                renderDiagram();
+                showStatus(`✨ Added magic colors to ${addedCount} nodes!`, 'success');
+            } else {
+                showStatus('✨ All nodes already colored!', 'success');
+            }
+        });
+
+        // ===== Export to Image =====
+        exportBtn.addEventListener('click', async function () {
+            const svgEl = previewContainer.querySelector('svg');
+            if (!svgEl) {
+                showStatus('⚠️ Please render a diagram first', 'error');
+                return;
+            }
+
+            exportBtn.disabled = true;
+            showStatus('🎨 Preparing high-quality image...', 'loading');
+
+            try {
+                // Check if user wants coloring (simple heuristic: if no 'style' keyword found, ask or apply?)
+                // User said: "if user was not added the color then create... if possible"
+                // We'll rely on the button for explicit action, but we could also auto-apply if we wanted.
+                // Let's keep it safe: explicit button is available, but if code has NO styles, we trigger magic color first?
+                // No, that might change user intent. The 'Magic Color' button is the clean way.
+
+                // Convert SVG to a data URL for high-res download
+                // Clone SVG and ensure it has xmlns attribute
+                const clonedSvg = svgEl.cloneNode(true);
+                clonedSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                clonedSvg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+
+                // Inline all computed styles into the SVG for standalone rendering
+                const allElements = clonedSvg.querySelectorAll('*');
+                const origElements = svgEl.querySelectorAll('*');
+                for (let i = 0; i < allElements.length && i < origElements.length; i++) {
+                    const computed = window.getComputedStyle(origElements[i]);
+                    const important = ['fill', 'stroke', 'stroke-width', 'font-family', 'font-size',
+                        'font-weight', 'opacity', 'color', 'stroke-dasharray', 'stroke-linecap',
+                        'stroke-linejoin', 'marker-end', 'marker-start', 'visibility', 'display'];
+                    important.forEach(prop => {
+                        const val = computed.getPropertyValue(prop);
+                        if (val && val !== '' && val !== 'none' && prop !== 'display') {
+                            allElements[i].style[prop] = val;
+                        }
+                    });
+                }
+
+                // ForeignObject removal block deleted to prevent alignment loss.
+                // With htmlLabels: false, Mermaid generates native SVG text which exports correctly.
+                // If any foreignObjects remain (other diagrams), we leave them as-is 
+                // because removing them breaks the layout completely.
+
+                const svgData = new XMLSerializer().serializeToString(clonedSvg);
+
+                // Create a canvas to render the SVG
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                // Set canvas size based on SVG dimensions
+                const svgRect = svgEl.getBoundingClientRect();
+                const scale = 4; // 4x for Ultra High Quality
+                canvas.width = svgRect.width * scale;
+                canvas.height = svgRect.height * scale;
+
+                // Draw white background
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Use data: URL instead of blob: URL to avoid tainted canvas
+                const img = new Image();
+                const svgBase64 = btoa(unescape(encodeURIComponent(svgData)));
+                const dataUrl = 'data:image/svg+xml;base64,' + svgBase64;
+
+                await new Promise((resolve, reject) => {
+                    img.onload = resolve;
+                    img.onerror = reject;
+                    img.src = dataUrl;
+                });
+
+                ctx.scale(scale, scale);
+                ctx.drawImage(img, 0, 0, svgRect.width, svgRect.height);
+
+                const imageDataUrl = canvas.toDataURL('image/png');
+
+                // Create download link
+                const link = document.createElement('a');
+                link.download = 'Block_Diagram_HighRes.png';
+                link.href = imageDataUrl;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                showStatus('✅ Image downloaded successfully!', 'success');
+
+
+            } catch (err) {
+                console.error('Export error:', err);
+                showStatus('❌ Export failed: ' + err.message, 'error');
+            } finally {
+                exportBtn.disabled = false;
+            }
+        });
+
+        // ===== Background =====
+        (function () {
+            const canvas = document.getElementById('bgCanvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, arcs = [], t = 0;
+            function resize() {
+                w = canvas.width = innerWidth;
+                h = canvas.height = innerHeight;
+                arcs = [];
+                for (let i = 0; i < 4; i++) {
+                    arcs.push({
+                        x: Math.random() * w, y: Math.random() * h,
+                        r: 100 + Math.random() * 300,
+                        a: Math.random() * Math.PI * 2,
+                        s: 0.002 + Math.random() * 0.004,
+                        lw: 1 + Math.random() * 1.5,
+                        d: Math.random() > 0.5 ? 1 : -1
+                    });
+                }
+            }
+            function draw() {
+                t += 0.012;
+                const g = ctx.createLinearGradient(w * 0.3, 0, w * 0.7, h);
+                g.addColorStop(0, '#064e3b');
+                g.addColorStop(0.4, '#0d9488');
+                g.addColorStop(0.7, '#06b6d4');
+                g.addColorStop(1, '#064e3b');
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, w, h);
+                arcs.forEach((arc, i) => {
+                    arc.a += arc.s * arc.d;
+                    arc.x += Math.sin(t * 0.4 + i) * 0.1;
+                    arc.y += Math.cos(t * 0.3 + i) * 0.1;
+                    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+                    ctx.lineWidth = arc.lw;
+                    ctx.beginPath();
+                    ctx.arc(arc.x, arc.y, arc.r, arc.a, arc.a + Math.PI * 0.6);
+                    ctx.stroke();
+                });
+                requestAnimationFrame(draw);
+            }
+            addEventListener('resize', resize);
+            resize(); draw();
+        })();
+    </script>
+</body>
+
+</html>

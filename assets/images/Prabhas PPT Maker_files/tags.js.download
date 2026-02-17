@@ -1,0 +1,2473 @@
+window.tagData = [
+  // ===== Icons =====
+  {
+    "label": "3d_printing",
+    "type": "icon",
+    "path": "assets/icons/3d_printing.png",
+    "tags": [
+      "3d printing",
+      "3D objects"
+    ]
+  },
+  {
+    "label": "abacus",
+    "type": "icon",
+    "path": "assets/icons/abacus.png",
+    "tags": [
+      "abacus",
+      "kiner garden",
+      "kids learning"
+    ]
+  },
+  {
+    "label": "ai_brain",
+    "type": "icon",
+    "path": "assets/icons/ai_brain.png",
+    "tags": [
+      "aibrain",
+      "ai mind",
+      "artificial intelligence"
+    ]
+  },
+  {
+    "label": "ambulance",
+    "type": "icon",
+    "path": "assets/icons/ambulance.png",
+    "tags": [
+      "ambulance",
+      "emergency"
+    ]
+  },
+  {
+    "label": "analytics",
+    "type": "icon",
+    "path": "assets/icons/analytics.png",
+    "tags": [
+      "analytics",
+      "bar graph",
+      "data analysis",
+      "statistics",
+      "data visualization",
+      "data insights",
+      "data trends",
+      "data metrics",
+      "data report",
+      "data dashboard"
+    ]
+  },
+  {
+    "label": "anthropology_fossil",
+    "type": "icon",
+    "path": "assets/icons/anthropology_fossil.png",
+    "tags": [
+      "anthropology_fossil",
+      "dinosaur",
+      "fossil",
+      "paleontology",
+      "prehistoric",
+      "ancient life",
+      "extinct species",
+      "archaeology"
+    ]
+  },
+  {
+    "label": "api_gateway",
+    "type": "icon",
+    "path": "assets/icons/api_gateway.png",
+    "tags": [
+      "api_gateway",
+      "api management",
+      "api integration",
+      "api security",
+      "api keys",
+      "api endpoints"
+    ]
+  },
+  {
+    "label": "astronomy_telescope",
+    "type": "icon",
+    "path": "assets/icons/astronomy_telescope.png",
+    "tags": [
+      "astronomy_telescope",
+      "telescope",
+      "stargazing",
+      "space observation",
+      "celestial objects",
+      "astronomical research",
+      "astroloygy"
+    ]
+  },
+  {
+    "label": "atm_card",
+    "type": "icon",
+    "path": "assets/icons/atm_card.png",
+    "tags": [
+      "atm_card",
+      "atm",
+      "bank card",
+      "debit card",
+      "credit card",
+      "financial transaction",
+      "banking"
+    ]
+  },
+  {
+    "label": "atom_structure",
+    "type": "icon",
+    "path": "assets/icons/atom_structure.png",
+    "tags": [
+      "atom_structure",
+      "atom",
+      "molecule",
+      "physics",
+      "science",
+      "atomic model",
+      "electrons",
+      "protons",
+      "neutrons",
+      "nucleus",
+    ]
+  },
+  {
+    "label": "aws",
+    "type": "icon",
+    "path": "assets/icons/aws.png",
+    "tags": [
+      "aws",
+      "amazon web services"
+    ]
+  },
+  {
+    "label": "bacteria",
+    "type": "icon",
+    "path": "assets/icons/bacteria.png",
+    "tags": [
+      "bacteria",
+      "microbiology",
+      "germs",
+      "pathogens",
+      "microorganisms",
+      "infection",
+      "disease",
+      "antibiotics",
+      "cell biology",
+      "petri dish",
+      "parasites",
+      "probiotics",
+      "bacterial growth",
+      "bacterial culture",
+      "bacterial infection",
+      "bacterial cell",
+      "bacterial structure",
+      "bacterial species",
+      "bacterial resistance",
+      "bacterial genetics"
+    ]
+  },
+  {
+    "label": "bank_building",
+    "type": "icon",
+    "path": "assets/icons/bank_building.png",
+    "tags": [
+      "bank_building",
+      "banking",
+      "finance",
+      "financial institution",
+      "bank",
+      "money management",
+      "financial services"
+    ]
+  },
+  {
+    "label": "battery_charge",
+    "type": "icon",
+    "path": "assets/icons/battery_charge.png",
+    "tags": [
+      "battery_charge",
+      "battery",
+      "power",
+      "energy",
+      "cell",
+      "rechargeable",
+      "electricity",
+      "voltage",
+      "current",
+      "capacity"
+    ]
+  },
+  {
+    "label": "block-diagram",
+    "type": "icon",
+    "path": "assets/icons/block-diagram.png",
+    "tags": [
+      "block-diagram",
+      "links",
+      "connections",
+      "block-chain",
+      "block chain",
+      "network",
+      "nodes",
+      "structure",
+      "system"
+    ]
+  },
+  {
+    "label": "blueprint",
+    "type": "icon",
+    "path": "assets/icons/blueprint.png",
+    "tags": [
+      "blueprint",
+      "stastics",
+      "planning",
+      "design",
+      "architecture",
+      "engineering",
+      "draft",
+      "diagram",
+      "layout",
+      "schematic"
+    ]
+  },
+  {
+    "label": "bluetooth",
+    "type": "icon",
+    "path": "assets/icons/bluetooth.png",
+    "tags": [
+      "bluetooth",
+      "wireless",
+      "connection"
+    ]
+  },
+  {
+    "label": "books_library",
+    "type": "icon",
+    "path": "assets/icons/books_library.png",
+    "tags": [
+      "books_library",
+      "book",
+      "note book",
+      "reading",
+      "education",
+      "knowledge",
+      "literature",
+      "study"
+    ]
+  },
+  {
+    "label": "bridge",
+    "type": "icon",
+    "path": "assets/icons/bridge.png",
+    "tags": [
+      "bridge",
+      "structure",
+      "construction",
+      "infrastructure",
+      "engineering",
+      "architecture"
+    ]
+  },
+  {
+    "label": "briefcase",
+    "type": "icon",
+    "path": "assets/icons/briefcase.png",
+    "tags": [
+      "briefcase",
+      "luggage",
+      "travel",
+      "business",
+      "office",
+      "work"
+    ]
+  },
+  {
+    "label": "bug_fix",
+    "type": "icon",
+    "path": "assets/icons/bug_fix.png",
+    "tags": [
+      "bug_fix",
+      "debugging",
+      "insect",
+      "software bug",
+      "bug"
+    ]
+  },
+  {
+    "label": "calculator",
+    "type": "icon",
+    "path": "assets/icons/calculator.png",
+    "tags": [
+      "calculator",
+      "calculation",
+      "math",
+      "arithmetic",
+      "numbers",
+      "math tool"
+    ]
+  },
+  {
+    "label": "calendar",
+    "type": "icon",
+    "path": "assets/icons/calendar.png",
+    "tags": [
+      "calendar",
+      "date",
+      "schedule",
+      "event",
+      "planner",
+      "time management",
+      "day",
+      "month",
+      "year"
+    ]
+  },
+  {
+    "label": "camera",
+    "type": "icon",
+    "path": "assets/icons/camera.png",
+    "tags": [
+      "camera",
+      "photography",
+      "photo",
+      "picture",
+      "video",
+      "snapshot"
+    ]
+  },
+  {
+    "label": "car_sedan",
+    "type": "icon",
+    "path": "assets/icons/car_sedan.png",
+    "tags": [
+      "car_sedan",
+      "car",
+      "vehicle",
+      "automobile",
+      "travel"
+    ]
+  },
+  {
+    "label": "certificate",
+    "type": "icon",
+    "path": "assets/icons/certificate.png",
+    "tags": [
+      "certificate",
+      "certification",
+      "diploma",
+      "award",
+      "achievement",
+      "recognition",
+      "honor"
+    ]
+  },
+  {
+    "label": "chatgpt_bot",
+    "type": "icon",
+    "path": "assets/icons/chatgpt_bot.png",
+    "tags": [
+      "chatgpt_bot",
+      "openai",
+      "chatgpt",
+      "ai assistant",
+      "artificial intelligence",
+      "aitool",
+      "language model",
+      "llm",
+      "gpt",
+      "ai tools"
+    ]
+  },
+  {
+    "label": "chef_hat",
+    "type": "icon",
+    "path": "assets/icons/chef_hat.png",
+    "tags": [
+      "chef_hat",
+      "kitchen",
+      "cooking",
+      "culinary",
+      "food preparation",
+      "chef",
+      "baking"
+    ]
+  },
+  {
+    "label": "chemical_flask",
+    "type": "icon",
+    "path": "assets/icons/chemical_flask.png",
+    "tags": [
+      "chemical_flask",
+      "flask",
+      "lab",
+      "chemistry",
+      "chemical experiment",
+      "chemicals"
+    ]
+  },
+  {
+    "label": "circuit_board",
+    "type": "icon",
+    "path": "assets/icons/circuit_board.png",
+    "tags": [
+      "circuit_board",
+      "pcb",
+      "circuit design",
+      "PCB layout",
+      "PCB manufacturing",
+      "pcd design"
+    ]
+  },
+  {
+    "label": "cloud_sync",
+    "type": "icon",
+    "path": "assets/icons/cloud_sync.png",
+    "tags": [
+      "cloud sync",
+      "cloud storage",
+      "data sync",
+      "cloud computing",
+      "data backup",
+      "file sync",
+      "cloud services",
+      "cloud synchronization"
+    ]
+  },
+  {
+    "label": "cocktail",
+    "type": "icon",
+    "path": "assets/icons/cocktail.png",
+    "tags": [
+      "cocktail",
+      "drink",
+      "beverage",
+      "alcohol",
+      "party",
+      "mixology",
+      "resorts",
+      "bars",
+      "clubs"
+    ]
+  },
+  {
+    "label": "code_development",
+    "type": "icon",
+    "path": "assets/icons/code_development.png",
+    "tags": [
+      "code_development",
+      "code",
+      "programming",
+      "development",
+      "software",
+      "coding",
+      "computer science",
+      "software engineering",
+      "web development",
+      "app development",
+      "software development",
+      "programming languages",
+      "coding skills",
+      "code editor",
+      "code review",
+      "code debugging",
+      "code optimization",
+      "code testing",
+      "code deployment",
+      "code versioning"
+    ]
+  },
+  {
+    "label": "crane",
+    "type": "icon",
+    "path": "assets/icons/crane.png",
+    "tags": [
+      "crane",
+      "construction",
+      "building",
+      "Jcb",
+      "heavy machinery",
+      "lifting equipment",
+      "industrial machinery",
+      "construction site",
+      "crane operator",
+      "crane truck"
+    ]
+  },
+  {
+    "label": "cyber_shield",
+    "type": "icon",
+    "path": "assets/icons/cyber_shield.png",
+    "tags": [
+      "cyber shield",
+      "security",
+      "protection",
+      "cybersecurity",
+      "digital shield",
+      "data protection",
+      "online security",
+      "cyber defense",
+      "cyber safety",
+      "cyber threat",
+      "cyber attack"
+    ]
+  },
+  {
+    "label": "data_science",
+    "type": "icon",
+    "path": "assets/icons/data_science.png",
+    "tags": [
+      "data science",
+      "data mining",
+      "big data",
+      "data base"
+    ]
+  },
+  {
+    "label": "dna",
+    "type": "icon",
+    "path": "assets/icons/dna.png",
+    "tags": [
+      "dna",
+      "neurons",
+      "genetics",
+      "biology",
+      "genome",
+      "heredity",
+      "molecular biology",
+      "genetic code",
+      "genetic research",
+      "genetic engineering"
+    ]
+  },
+  {
+    "label": "doctor",
+    "type": "icon",
+    "path": "assets/icons/doctor.png",
+    "tags": [
+      "doctor",
+      "healthcare",
+      "physician",
+      "medical professional",
+      "health",
+      "hospital",
+      "clinic",
+      "medical care",
+      "medical treatment"
+    ]
+  },
+  {
+    "label": "drone",
+    "type": "icon",
+    "path": "assets/icons/drone.png",
+    "tags": [
+      "drone",
+      "unmanned aerial vehicle",
+      "UAV",
+      "aerial photography",
+      "delivery drone",
+      "drones for surveillance",
+      "drone technology",
+      "drone show",
+      "drone delivery"
+    ]
+  },
+  {
+    "label": "economics_chart",
+    "type": "icon",
+    "path": "assets/icons/economics_chart.png",
+    "tags": [
+      "economics_chart",
+      "data analysis",
+      "financial trends",
+      "market research",
+      "economic indicators",
+      "economic growth",
+      "economic data",
+      "economic statistics",
+      "economic report",
+      "economic forecast",
+      "economic modeling"
+    ]
+  },
+  {
+    "label": "education",
+    "type": "icon",
+    "path": "assets/icons/education.png",
+    "tags": [
+      "education",
+      "learning",
+      "knowledge",
+      "graduation",
+      "degree"
+    ]
+  },
+  {
+    "label": "electric_bike",
+    "type": "icon",
+    "path": "assets/icons/electric_bike.png",
+    "tags": [
+      "electric_bike",
+      "bike",
+      "2 wheeler",
+      "e-bike",
+      "electric vehicle",
+      "raiding",
+      "racing",
+    ]
+  },
+  {
+    "label": "embedded_system",
+    "type": "icon",
+    "path": "assets/icons/embedded_system.png",
+    "tags": [
+      "embedded_system",
+      "electronics",
+      "rasperry pi",
+      "arduino",
+      "mother board",
+      "iot",
+      "circuitry"
+    ]
+  },
+  {
+    "label": "exam",
+    "type": "icon",
+    "path": "assets/icons/exam.png",
+    "tags": [
+      "exam",
+      "test",
+      "assessment",
+      "quiz",
+      "evaluation",
+      "study",
+      "certification",
+      "checkup",
+      "check boxes",
+      "questions"
+    ]
+  },
+  {
+    "label": "factory",
+    "type": "icon",
+    "path": "assets/icons/factory.png",
+    "tags": [
+      "factory",
+      "industry",
+      "manufacturing",
+      "production",
+      "manufacturing plant",
+      "industrial"
+    ]
+  },
+  {
+    "label": "fingerprint_scan",
+    "type": "icon",
+    "path": "assets/icons/fingerprint_scan.png",
+    "tags": [
+      "fingerprint scan",
+      "biometric",
+      "security",
+      "authentication",
+      "identity verification",
+      "access control",
+      "fingerprint recognition",
+      "fingerprint technology",
+      "fingerprint reader",
+      "fingerprint sensor"
+    ]
+  },
+  {
+    "label": "fitness",
+    "type": "icon",
+    "path": "assets/icons/fitness.png",
+    "tags": [
+      "fitness",
+      "running",
+      "exercise",
+      "workout",
+      "health",
+      "gym"
+    ]
+  },
+  {
+    "label": "flowchart",
+    "type": "icon",
+    "path": "assets/icons/flowchart.png",
+    "tags": [
+      "flowchart",
+      "algorithm flow",
+      "process diagram",
+      "workflow",
+      "data flow",
+      "system design",
+      "process mapping",
+      "decision tree",
+      "process visualization"
+    ]
+  },
+  {
+    "label": "flower",
+    "type": "icon",
+    "path": "assets/icons/flower.png",
+    "tags": [
+      "flower",
+      "botany",
+      "nature",
+      "bloom",
+      "petal",
+      "plant"
+    ]
+  },
+  {
+    "label": "food",
+    "type": "icon",
+    "path": "assets/icons/food.png",
+    "tags": [
+      "food",
+      "meal",
+      "burger",
+      "fast food",
+      "fat"
+    ]
+  },
+  {
+    "label": "frog_zoology",
+    "type": "icon",
+    "path": "assets/icons/frog_zoology.png",
+    "tags": [
+      "frog_zoology",
+      "frog",
+      "amphibian",
+      "herpetology"
+    ]
+  },
+  {
+    "label": "gears",
+    "type": "icon",
+    "path": "assets/icons/gears.png",
+    "tags": [
+      "gears",
+      "mechanical",
+      "settings",
+      "cogs",
+      "machinery",
+      "mechanism",
+      "mechanical engineering",
+      "gear system",
+      "gearbox",
+      "gear train"
+    ]
+  },
+  {
+    "label": "google",
+    "type": "icon",
+    "path": "assets/icons/google.png",
+    "tags": [
+      "google",
+      "search engine",
+      "google services",
+      "google apps",
+      "google products",
+      "google tools",
+      "google platform",
+      "google cloud",
+      "google workspace"
+    ]
+  },
+  {
+    "label": "geometry",
+    "type": "icon",
+    "path": "assets/icons/geometry.png",
+    "tags": [
+      "geometry",
+      "mathematics",
+      "shapes",
+      "3d shapes",
+      "geometric figures"
+    ]
+  },
+  {
+    "label": "github",
+    "type": "icon",
+    "path": "assets/icons/github.png",
+    "tags": [
+      "github",
+      "version control",
+      "code repository",
+      "git",
+      "open source",
+      "software development"
+    ]
+  },
+  {
+    "label": "globe_earth",
+    "type": "icon",
+    "path": "assets/icons/globe_earth.png",
+    "tags": [
+      "globe_earth",
+      "earth",
+      "world",
+      "geography",
+      "planet",
+      "global",
+      "map",
+      "globe"
+    ]
+  },
+  {
+    "label": "gmail",
+    "type": "icon",
+    "path": "assets/icons/gmail.png",
+    "tags": [
+      "gmail",
+      "email",
+      "google mail",
+      "inbox",
+      "communication",
+      "messaging",
+      "professional mail",
+      "personal mail",
+      "fax"
+    ]
+  },
+  {
+    "label": "handshake",
+    "type": "icon",
+    "path": "assets/icons/handshake.png",
+    "tags": [
+      "handshake",
+      "human interaction",
+      "agreement",
+      "partnership",
+      "collaboration",
+      "business deal",
+      "teamwork",
+      "cooperation",
+      "mutual understanding",
+      "trust"
+    ]
+  },
+  {
+    "label": "hardware_tools",
+    "type": "icon",
+    "path": "assets/icons/hardware_tools.png",
+    "tags": [
+      "hardware_tools",
+      "tools",
+      "repair",
+      "maintenance",
+      "construction",
+      "DIY",
+      "toolbox",
+      "hardware store",
+      "handyman",
+      "tool set"
+    ]
+  },
+  {
+    "label": "healthcare",
+    "type": "icon",
+    "path": "assets/icons/healthcare.png",
+    "tags": [
+      "healthcare",
+      "hospital",
+      "medical",
+      "health",
+      "clinic",
+      "treatment",
+      "wellness",
+      "patient care",
+      "health services",
+      "health system",
+      "operation theater",
+      "surgery"
+    ]
+  },
+  {
+    "label": "helmet_safety",
+    "type": "icon",
+    "path": "assets/icons/helmet_safety.png",
+    "tags": [
+      "helmet_safety",
+      "construction safety",
+      "construction site",
+      "civil engineering",
+      "hard hat"
+    ]
+  },
+  {
+    "label": "history_scroll",
+    "type": "icon",
+    "path": "assets/icons/history_scroll.png",
+    "tags": [
+      "history_scroll",
+      "bill",
+      "document",
+      "list",
+      "record",
+      "archive",
+      "manuscript",
+      "invoice",
+      "receipt"
+    ]
+  },
+  {
+    "label": "home",
+    "type": "icon",
+    "path": "assets/icons/home.png",
+    "tags": [
+      "home",
+      "house",
+      "residence",
+      "living"
+    ]
+  },
+  {
+    "label": "idea",
+    "type": "icon",
+    "path": "assets/icons/idea.png",
+    "tags": [
+      "idea",
+      "innovation",
+      "creativity",
+      "inspiration",
+      "brainstorming"
+    ]
+  },
+  {
+    "label": "industrial_robot",
+    "type": "icon",
+    "path": "assets/icons/industrial_robot.png",
+    "tags": [
+      "industrial_robot",
+      "robos",
+      "automation",
+      "robots",
+      "robotics",
+      "humanoid robos"
+    ]
+  },
+  {
+    "label": "instagram",
+    "type": "icon",
+    "path": "assets/icons/instagram.png",
+    "tags": [
+      "instagram",
+      "social media"
+    ]
+  },
+  {
+    "label": "java",
+    "type": "icon",
+    "path": "assets/icons/java.png",
+    "tags": [
+      "java"
+    ]
+  },
+  {
+    "label": "language_translation",
+    "type": "icon",
+    "path": "assets/icons/language_translation.png",
+    "tags": [
+      "language_translation",
+      "translation",
+      "languages",
+      "linguistics",
+      "multilingual",
+      "language learning",
+      "language services"
+    ]
+  },
+  {
+    "label": "laptop",
+    "type": "icon",
+    "path": "assets/icons/laptop.png",
+    "tags": [
+      "laptop",
+      "PC",
+      "device",
+      "computer",
+      "computer science and engineering",
+      "desktop"
+    ]
+  },
+  {
+    "label": "law_scales",
+    "type": "icon",
+    "path": "assets/icons/law_scales.png",
+    "tags": [
+      "law_scales",
+      "law",
+      "justice",
+      "legal system",
+      "court",
+      "legal proceedings",
+      "legal matters",
+      "legal rights",
+      "rights",
+      "human rights"
+    ]
+  },
+  {
+    "label": "liberal_arts_palette",
+    "type": "icon",
+    "path": "assets/icons/liberal_arts_palette.png",
+    "tags": [
+      "liberal_arts_palette",
+      "art",
+      "painting",
+      "creativity",
+      "drawing",
+      "visual arts",
+      "fine arts"
+    ]
+  },
+  {
+    "label": "linkedin",
+    "type": "icon",
+    "path": "assets/icons/linkedin.png",
+    "tags": [
+      "linkedin",
+      "jobs",
+      "professional networking",
+      "career",
+      "networking"
+    ]
+  },
+  {
+    "label": "location",
+    "type": "icon",
+    "path": "assets/icons/location.png",
+    "tags": [
+      "location",
+      "GPS",
+      "map",
+      "place",
+      "navigation"
+    ]
+  },
+  {
+    "label": "logistics_box",
+    "type": "icon",
+    "path": "assets/icons/logistics_box.png",
+    "tags": [
+      "logistics_box",
+      "parcile",
+      "shipping",
+      "delivery",
+      "transportation",
+      "logistics",
+      "supply chain",
+      "freight",
+      "cargo",
+      "warehousing",
+      "corrier"
+    ]
+  },
+  {
+    "label": "machine_learning",
+    "type": "icon",
+    "path": "assets/icons/machine_learning.png",
+    "tags": [
+      "brain",
+      "human brain",
+      "mind",
+      "neural networks"
+    ]
+  },
+  {
+    "label": "magnet",
+    "type": "icon",
+    "path": "assets/icons/magnet.png",
+    "tags": [
+      "magnet",
+      "magnetism",
+      "magnetic field",
+      "attraction",
+      "repulsion",
+      "magnetic force",
+      "magnetic properties",
+      "magnetic materials",
+      "magnetic poles",
+      "magnetic flux"
+    ]
+  },
+  {
+    "label": "marketing_bullhorn",
+    "type": "icon",
+    "path": "assets/icons/marketing_bullhorn.png",
+    "tags": [
+      "marketing_bullhorn",
+      "graph calculus",
+      "predictions",
+      "data trends",
+      "data analysis",
+      "stock market",
+      "financial forecasting",
+      "trading analysis",
+      "trading",
+      "growth"
+    ]
+  },
+  {
+    "label": "materials_technology",
+    "type": "icon",
+    "path": "assets/icons/materials_technology.png",
+    "tags": [
+      "materials_technology",
+      "materials science",
+      "material properties",
+      "material engineering"
+    ]
+  },
+  {
+    "label": "mathematics_pi",
+    "type": "icon",
+    "path": "assets/icons/mathematics_pi.png",
+    "tags": [
+      "mathematics_pi",
+      "math",
+      "pi",
+      "equations",
+      "formulas",
+      "physics",
+      "calculus",
+      "algebra",
+      "geometry",
+      "trigonometry"
+    ]
+  },
+  {
+    "label": "math_compass",
+    "type": "icon",
+    "path": "assets/icons/math_compass.png",
+    "tags": [
+      "math_compass",
+      "compass",
+      "direction",
+      "navigation"
+    ]
+  },
+  {
+    "label": "media_news",
+    "type": "icon",
+    "path": "assets/icons/media_news.png",
+    "tags": [
+      "media_news",
+      "news",
+      "journalism",
+      "reporting",
+      "list"
+    ]
+  },
+  {
+    "label": "medicine",
+    "type": "icon",
+    "path": "assets/icons/medicine.png",
+    "tags": [
+      "medicine",
+      "pills",
+      "tablets",
+      "meditation",
+      "grugs",
+      "pharmaceuticals",
+      "pharmacy"
+    ]
+  },
+  {
+    "label": "meeting",
+    "type": "icon",
+    "path": "assets/icons/meeting.png",
+    "tags": [
+      "meeting",
+      "meetup",
+      "meet"
+    ]
+  },
+  {
+    "label": "mental-health",
+    "type": "icon",
+    "path": "assets/icons/mental-health.png",
+    "tags": [
+      "mental-health",
+      "wellness",
+      "psychology",
+      "counseling",
+      "therapy"
+    ]
+  },
+  {
+    "label": "microprocessor",
+    "type": "icon",
+    "path": "assets/icons/microprocessor.png",
+    "tags": [
+      "microprocessor",
+      "micro controller",
+      "cpu",
+      "processor",
+      "computer chip",
+      "semiconductor",
+      "chip"
+    ]
+  },
+  {
+    "label": "microscope",
+    "type": "icon",
+    "path": "assets/icons/microscope.png",
+    "tags": [
+      "microscope",
+      "laboratory",
+      "lab",
+      "science",
+      "research"
+    ]
+  },
+  {
+    "label": "mobile-app",
+    "type": "icon",
+    "path": "assets/icons/mobile-app.png",
+    "tags": [
+      "mobile-app",
+      "android",
+      "ios",
+      "application",
+      "smartphone"
+    ]
+  },
+  {
+    "label": "mobile_comm",
+    "type": "icon",
+    "path": "assets/icons/mobile_comm.png",
+    "tags": [
+      "mobile_comm",
+      "mobile",
+      "phone",
+      "cell phone",
+      "communication",
+      "smartphone",
+      "cellular"
+    ]
+  },
+  {
+    "label": "money_finance",
+    "type": "icon",
+    "path": "assets/icons/money_finance.png",
+    "tags": [
+      "money_finance",
+      "money",
+      "finance",
+      "currency",
+      "investment",
+      "banking",
+      "wealth",
+      "economics",
+      "financial planning",
+      "financial management",
+      "cash"
+    ]
+  },
+  {
+    "label": "music",
+    "type": "icon",
+    "path": "assets/icons/music.png",
+    "tags": [
+      "music",
+      "songs",
+      "audio",
+      "melody",
+      "tunes"
+    ]
+  },
+  {
+    "label": "nutrition",
+    "type": "icon",
+    "path": "assets/icons/nutrition.png",
+    "tags": [
+      "nutrition",
+      "health",
+      "diet",
+      "food",
+      "wellness",
+      "vitamins",
+      "minerals",
+      "nutrients",
+      "healthy eating",
+      "balanced diet",
+      "healthy food",
+      "milk",
+      "veggies"
+    ]
+  },
+  {
+    "label": "physics_atom",
+    "type": "icon",
+    "path": "assets/icons/physics_atom.png",
+    "tags": [
+      "physics_atom",
+      "hero",
+      "mysterious person",
+      "theaf",
+      "villian",
+      "bad guy"
+    ]
+  },
+  {
+    "label": "plant_botany",
+    "type": "icon",
+    "path": "assets/icons/plant_botany.png",
+    "tags": [
+      "plant_botany",
+      "plant",
+      "botany",
+      "flora",
+      "leaf",
+      "photosynthesis"
+    ]
+  },
+  {
+    "label": "presentation",
+    "type": "icon",
+    "path": "assets/icons/presentation.png",
+    "tags": [
+      "presentation",
+      "pie-chart",
+      "graph",
+      "data visualization",
+      "graphical representation"
+    ]
+  },
+  {
+    "label": "psychology_brain",
+    "type": "icon",
+    "path": "assets/icons/psychology_brain.png",
+    "tags": [
+      "psychology_brain",
+      "psychology"
+    ]
+  },
+  {
+    "label": "python",
+    "type": "icon",
+    "path": "assets/icons/python.png",
+    "tags": [
+      "python"
+    ]
+  },
+  {
+    "label": "recycle",
+    "type": "icon",
+    "path": "assets/icons/recycle.png",
+    "tags": [
+      "recycle",
+      "process"
+    ]
+  },
+  {
+    "label": "resistor",
+    "type": "icon",
+    "path": "assets/icons/resistor.png",
+    "tags": [
+      "resistor",
+      "semi conductor",
+      "resistance"
+    ]
+  },
+  {
+    "label": "rocket_launch",
+    "type": "icon",
+    "path": "assets/icons/rocket_launch.png",
+    "tags": [
+      "rocket launch",
+      "startup",
+      "rocket",
+      "space craft"
+    ]
+  },
+  {
+    "label": "satellite",
+    "type": "icon",
+    "path": "assets/icons/satellite.png",
+    "tags": [
+      "satellite",
+      "satellite communication"
+    ]
+  },
+  {
+    "label": "server",
+    "type": "icon",
+    "path": "assets/icons/server.png",
+    "tags": [
+      "server",
+      "data centers",
+      "hosting"
+    ]
+  },
+  {
+    "label": "shopping",
+    "type": "icon",
+    "path": "assets/icons/shopping.png",
+    "tags": [
+      "shopping",
+      "cart"
+    ]
+  },
+  {
+    "label": "solar_panel",
+    "type": "icon",
+    "path": "assets/icons/solar_panel.png",
+    "tags": [
+      "solar panel",
+      "sun",
+      "clean energy",
+    ]
+  },
+  {
+    "label": "sprout_growth",
+    "type": "icon",
+    "path": "assets/icons/sprout_growth.png",
+    "tags": [
+      "sprout_growth",
+      "farming",
+      "crop"
+    ]
+  },
+  {
+    "label": "stethoscope",
+    "type": "icon",
+    "path": "assets/icons/stethoscope.png",
+    "tags": [
+      "stethoscope",
+      "doctors",
+      "hospitals"
+    ]
+  },
+  {
+    "label": "strategy",
+    "type": "icon",
+    "path": "assets/icons/strategy.png",
+    "tags": [
+      "strategy",
+      ""
+    ]
+  },
+  {
+    "label": "student",
+    "type": "icon",
+    "path": "assets/icons/student.png",
+    "tags": [
+      "student",
+      "graduation"
+    ]
+  },
+  {
+    "label": "syringe",
+    "type": "icon",
+    "path": "assets/icons/syringe.png",
+    "tags": [
+      "syringe",
+      "vaccine",
+      "injection"
+    ]
+  },
+  {
+    "label": "target",
+    "type": "icon",
+    "path": "assets/icons/target.png",
+    "tags": [
+      "target"
+    ]
+  },
+  {
+    "label": "teacher",
+    "type": "icon",
+    "path": "assets/icons/teacher.png",
+    "tags": [
+      "teacher",
+      "teaching"
+    ]
+  },
+  {
+    "label": "teamwork",
+    "type": "icon",
+    "path": "assets/icons/teamwork.png",
+    "tags": [
+      "teamwork",
+      "community"
+    ]
+  },
+  {
+    "label": "telegram",
+    "type": "icon",
+    "path": "assets/icons/telegram.png",
+    "tags": [
+      "telegram"
+    ]
+  },
+  {
+    "label": "terminal_shell",
+    "type": "icon",
+    "path": "assets/icons/terminal_shell.png",
+    "tags": [
+      "terminal shell",
+      "terminal"
+    ]
+  },
+  {
+    "label": "theater_drama",
+    "type": "icon",
+    "path": "assets/icons/theater_drama.png",
+    "tags": [
+      "theater_drama",
+      "skit",
+      "clubs",
+      "fun"
+    ]
+  },
+  {
+    "label": "thermal_engineering",
+    "type": "icon",
+    "path": "assets/icons/thermal_engineering.png",
+    "tags": [
+      "thermal_engineering",
+      "thermo meter",
+      "temperature"
+    ]
+  },
+  {
+    "label": "timeline",
+    "type": "icon",
+    "path": "assets/icons/timeline.png",
+    "tags": [
+      "timeline",
+      "schedule",
+      "tasks",
+      "to-do list"
+    ]
+  },
+  {
+    "label": "travel",
+    "type": "icon",
+    "path": "assets/icons/travel.png",
+    "tags": [
+      "travel",
+      "international trade",
+      "trip",
+      "travelling"
+    ]
+  },
+  {
+    "label": "twitter_x",
+    "type": "icon",
+    "path": "assets/icons/twitter_x.png",
+    "tags": [
+      "twitter_x",
+      "twitter",
+      "X"
+    ]
+  },
+  {
+    "label": "virtual_reality",
+    "type": "icon",
+    "path": "assets/icons/virtual_reality.png",
+    "tags": [
+      "virtual_reality",
+      "future tech"
+    ]
+  },
+  {
+    "label": "virus",
+    "type": "icon",
+    "path": "assets/icons/virus.png",
+    "tags": [
+      "virus",
+      "corona"
+    ]
+  },
+  {
+    "label": "visual_studio_code",
+    "type": "icon",
+    "path": "assets/icons/visual_studio_code.png",
+    "tags": [
+      "visual_studio_code",
+      "vs code",
+      "IDE",
+      "development environment"
+    ]
+  },
+  {
+    "label": "weather",
+    "type": "icon",
+    "path": "assets/icons/weather.png",
+    "tags": [
+      "weather",
+      "climate"
+    ]
+  },
+  {
+    "label": "web_design",
+    "type": "icon",
+    "path": "assets/icons/web_design.png",
+    "tags": [
+      "web_design",
+      "web development",
+      "app developemnt",
+      "software"
+    ]
+  },
+  {
+    "label": "whatsapp",
+    "type": "icon",
+    "path": "assets/icons/whatsapp.png",
+    "tags": [
+      "whatsapp",
+      "messanging"
+    ]
+  },
+  {
+    "label": "wifi",
+    "type": "icon",
+    "path": "assets/icons/wifi.png",
+    "tags": [
+      "wifi",
+      "internet"
+    ]
+  },
+  {
+    "label": "wifi_router",
+    "type": "icon",
+    "path": "assets/icons/wifi_router.png",
+    "tags": [
+      "wifi_router"
+    ]
+  },
+  {
+    "label": "wind",
+    "type": "icon",
+    "path": "assets/icons/wind.png",
+    "tags": [
+      "wind",
+      "wind power",
+      "wind meal"
+    ]
+  },
+  {
+    "label": "youtube",
+    "type": "icon",
+    "path": "assets/icons/youtube.png",
+    "tags": [
+      "youtube"
+    ]
+  },
+
+  // ===== IMAGES ===========================================================================
+
+  {
+    label: "ai",
+    type: "image",
+    path: "assets/images/ai.jpg",
+    tags: ["ai", "artificial intelligence", "machine learning", "automation", "technology"]
+  },
+  {
+    label: "artificial intelligence",
+    type: "image",
+    path: "assets/images/artificial intelligence.jpg",
+    tags: ["ai", "artificial intelligence", "deep learning", "neural network"]
+  },
+  {
+    label: "automation_robots_9",
+    type: "image",
+    path: "assets/images/automation_robots_9.jpg",
+    tags: ["ai", "artificial intelligence", "deep learning", "neural network", "future tech", "automation robots"]
+  },
+  {
+    label: "books-study",
+    type: "image",
+    path: "assets/images/books-study.jpg",
+    tags: ["books", "study", "learning", "education", "knowledge"]
+  },
+  {
+    label: "city",
+    type: "image",
+    path: "assets/images/city.jpg",
+    tags: ["city", "urban", "buildings", "infrastructure", "development"]
+  },
+  {
+    label: "cybersecurity",
+    type: "image",
+    path: "assets/images/cybersecurity.jpg",
+    tags: ["cybersecurity", "security", "privacy", "hacking", "data protection"]
+  },
+  {
+    label: "data-analytics",
+    type: "image",
+    path: "assets/images/data-analytics.jpg",
+    tags: ["data", "analytics", "statistics", "charts", "analysis"]
+  },
+  {
+    label: "data-center",
+    type: "image",
+    path: "assets/images/data-center.jpg",
+    tags: ["data center", "servers", "cloud", "storage", "technology"]
+  },
+  {
+    label: "earth",
+    type: "image",
+    path: "assets/images/earth.jpg",
+    tags: ["earth", "planet", "global", "world", "environment"]
+  },
+  {
+    label: "education-classroom",
+    type: "image",
+    path: "assets/images/education-classroom.jpg",
+    tags: ["classroom", "education", "students", "learning", "school"]
+  },
+  {
+    label: "environment",
+    type: "image",
+    path: "assets/images/environment.jpg",
+    tags: ["environment", "nature", "sustainability", "green", "climate"]
+  },
+  {
+    label: "finance",
+    type: "image",
+    path: "assets/images/finance.jpg",
+    tags: ["finance", "money", "investment", "banking", "economy"]
+  },
+  {
+    label: "fitness",
+    type: "image",
+    path: "assets/images/fitness.jpg",
+    tags: ["fitness", "exercise", "health", "workout", "sports"]
+  },
+  {
+    label: "graduation",
+    type: "image",
+    path: "assets/images/graduation.jpg",
+    tags: ["graduation", "education", "degree", "students", "achievement"]
+  },
+  {
+    label: "growth-chart",
+    type: "image",
+    path: "assets/images/growth-chart.jpg",
+    tags: ["growth", "business", "chart", "success", "progress"]
+  },
+  {
+    label: "healthy-food",
+    type: "image",
+    path: "assets/images/healthy-food.jpg",
+    tags: ["healthy food", "nutrition", "diet", "health", "vegetables"]
+  },
+  {
+    label: "hospital",
+    type: "image",
+    path: "assets/images/hospital.jpg",
+    tags: ["hospital", "medical", "healthcare", "treatment", "clinic"]
+  },
+  {
+    label: "innovation-lightbulb",
+    type: "image",
+    path: "assets/images/innovation-lightbulb.jpg",
+    tags: ["innovation", "idea", "creativity", "invention", "thinking"]
+  },
+  {
+    label: "leadership",
+    type: "image",
+    path: "assets/images/leadership.jpg",
+    tags: ["leadership", "management", "team", "boss", "success"]
+  },
+  {
+    label: "marketing",
+    type: "image",
+    path: "assets/images/marketing.jpg",
+    tags: ["marketing", "promotion", "advertising", "business", "branding"]
+  },
+  {
+    label: "medical-technology",
+    type: "image",
+    path: "assets/images/medical-technology.jpg",
+    tags: ["medical technology", "health tech", "equipment", "innovation", "healthcare"]
+  },
+  {
+    label: "office-work",
+    type: "image",
+    path: "assets/images/office-work.jpg",
+    tags: ["office", "work", "business", "corporate", "workspace"]
+  },
+  {
+    label: "online-learning",
+    type: "image",
+    path: "assets/images/online-learning.jpg",
+    tags: ["online learning", "elearning", "education", "remote study", "digital class"]
+  },
+  {
+    label: "research-lab",
+    type: "image",
+    path: "assets/images/research-lab.jpg",
+    tags: ["research", "laboratory", "science", "experiment", "innovation"]
+  },
+  {
+    label: "robotics",
+    type: "image",
+    path: "assets/images/robotics.jpg",
+    tags: ["robotics", "robots", "automation", "technology", "engineering"]
+  },
+  {
+    label: "semiconductors",
+    type: "image",
+    path: "assets/images/semiconductors.jpg",
+    tags: ["semiconductors", "chips", "electronics", "hardware", "technology"]
+  },
+  {
+    label: "startup",
+    type: "image",
+    path: "assets/images/startup.jpg",
+    tags: ["startup", "business", "entrepreneur", "innovation", "company"]
+  },
+  {
+    label: "team-presentation",
+    type: "image",
+    path: "assets/images/team-presentation.jpg",
+    tags: ["presentation", "team", "meeting", "business", "discussion"]
+  },
+  {
+    label: "teamwork",
+    type: "image",
+    path: "assets/images/teamwork.jpg",
+    tags: ["teamwork", "collaboration", "group", "people", "business"]
+  },
+  {
+    label: "technology-background",
+    type: "image",
+    path: "assets/images/technology-background.jpg",
+    tags: ["technology", "digital", "abstract", "tech background", "innovation"]
+  },
+  {
+    label: "travel",
+    type: "image",
+    path: "assets/images/travel.jpg",
+    tags: ["travel", "tourism", "journey", "world", "adventure"]
+  },
+  {
+    label: "assembly_line_2",
+    type: "image",
+    path: "assets/images/assembly_line_2.jpeg",
+    tags: ["assembly line", "factory", "auto mobiles", "indusrty automation", "car manufracturing"]
+  },
+
+  {
+    label: "a boy in the dump yard collecting the waste",
+    type: "image",
+    path: "assets/images/a boy in the dump yard collecting the waste.jpeg",
+    tags: ["waste", "dump yard", "garbage", "poverty", "environment", "boy", "recycling"]
+  },
+  {
+    label: "astronot in space and important random",
+    type: "image",
+    path: "assets/images/astronot in space and important random.jpg",
+    tags: ["astronaut", "space", "cosmos", "universe", "random", "important"]
+  },
+  {
+    label: "big and bright light in space",
+    type: "image",
+    path: "assets/images/big and bright light in space.jpeg",
+    tags: ["space", "light", "bright", "star", "supernova", "cosmos", "astronomy"]
+  },
+  {
+    label: "chemical_industry",
+    type: "image",
+    path: "assets/images/chemical_industry.jpg",
+    tags: ["chemical", "industry", "factory", "smoke", "pollution", "science", "manufacturing"]
+  },
+  {
+    label: "child laughing a perfect image of social ",
+    type: "image",
+    path: "assets/images/child laughing a perfect image of social .jpeg",
+    tags: ["child", "laughing", "happy", "smile", "social", "joy", "people"]
+  },
+  {
+    label: "coding or hacking mtrix move green color codes",
+    type: "image",
+    path: "assets/images/coding or hacking mtrix move green color codes.jpeg",
+    tags: ["coding", "hacking", "matrix", "green code", "cybersecurity", "developer", "technology"]
+  },
+  {
+    label: "colorful_lines_ and random",
+    type: "image",
+    path: "assets/images/colorful_lines_ and random.jpeg",
+    tags: ["colorful", "lines", "abstract", "pattern", "design", "random"]
+  },
+  {
+    label: "constitution or assembly hall",
+    type: "image",
+    path: "assets/images/constitution or assembly hall.jpeg",
+    tags: ["constitution", "assembly hall", "parliament", "government", "law", "politics", "democracy"]
+  },
+  {
+    label: "corporate and random",
+    type: "image",
+    path: "assets/images/corporate and random.jpeg",
+    tags: ["corporate", "business", "office", "professional", "random", "work"]
+  },
+  {
+    label: "couple_seeing the night sky",
+    type: "image",
+    path: "assets/images/couple_seeing the night sky.jpeg",
+    tags: ["couple", "night sky", "stars", "romantic", "astronomy", "love", "stargazing"]
+  },
+  {
+    label: "cyber_law_12",
+    type: "image",
+    path: "assets/images/cyber_law_12.jpeg",
+    tags: ["cyber law", "legal", "internet", "security", "digital rights", "technology"]
+  },
+  {
+    label: "diabetes_monitoring_12",
+    type: "image",
+    path: "assets/images/diabetes_monitoring_12.jpeg",
+    tags: ["diabetes", "monitoring", "health", "medical", "glucose", "blood sugar", "healthcare"]
+  },
+  {
+    label: "droughts",
+    type: "image",
+    path: "assets/images/droughts.jpeg",
+    tags: ["drought", "dry land", "climate change", "water crisis", "cracked earth", "environment"]
+  },
+  {
+    label: "fast_food_1",
+    type: "image",
+    path: "assets/images/fast_food_1.jpeg",
+    tags: ["fast food", "burger", "junk food", "meal", "diet", "unhealthy"]
+  },
+  {
+    label: "finance and random",
+    type: "image",
+    path: "assets/images/finance and random.jpeg",
+    tags: ["finance", "money", "economy", "business", "random"]
+  },
+  {
+    label: "finance_8",
+    type: "image",
+    path: "assets/images/finance_8.jpeg",
+    tags: ["finance", "banking", "charts", "business", "investment", "growth"]
+  },
+  {
+    label: "food donation",
+    type: "image",
+    path: "assets/images/food donation.jpeg",
+    tags: ["food donation", "charity", "volunteer", "community", "helping", "social work"]
+  },
+  {
+    label: "framing",
+    type: "image",
+    path: "assets/images/framing.jpeg",
+    tags: ["framing", "construction", "structure", "building", "carpentry"]
+  },
+  {
+    label: "galaxy",
+    type: "image",
+    path: "assets/images/galaxy.jpg",
+    tags: ["galaxy", "space", "stars", "universe", "astronomy", "milky way"]
+  },
+  {
+    label: "glass buildings and random",
+    type: "image",
+    path: "assets/images/glass buildings and random.jpeg",
+    tags: ["glass buildings", "architecture", "skyscraper", "city", "modern", "urban", "random"]
+  },
+  {
+    label: "global_shipping and random",
+    type: "image",
+    path: "assets/images/global_shipping and random.jpeg",
+    tags: ["global shipping", "logistics", "cargo", "transport", "trade", "freight", "random"]
+  },
+  {
+    label: "grocery_shopping_1",
+    type: "image",
+    path: "assets/images/grocery_shopping_1.jpeg",
+    tags: ["grocery", "shopping", "supermarket", "food", "retail", "consumer"]
+  },
+  {
+    label: "gun and bullets",
+    type: "image",
+    path: "assets/images/gun and bullets.jpeg",
+    tags: ["gun", "bullets", "weapon", "violence", "security", "defense", "military"]
+  },
+  {
+    label: "half moon seeing from earth",
+    type: "image",
+    path: "assets/images/half moon seeing from earth.jpeg",
+    tags: ["moon", "half moon", "night sky", "space", "lunar", "astronomy"]
+  },
+  {
+    label: "healthy food",
+    type: "image",
+    path: "assets/images/healthy food.jpeg",
+    tags: ["healthy food", "vegetables", "fruits", "diet", "nutrition", "wellness", "organic"]
+  },
+  {
+    label: "image of a factory emitting lot od air pollution",
+    type: "image",
+    path: "assets/images/image of a factory emitting lot od air pollution.jpeg",
+    tags: ["factory", "air pollution", "smoke", "emissions", "environment", "climate change", "industry"]
+  },
+  {
+    label: "imp random and hand shaking",
+    type: "image",
+    path: "assets/images/imp random and hand shaking.jpeg",
+    tags: ["handshake", "agreement", "deal", "partnership", "business", "random", "important"]
+  },
+  {
+    label: "imp random",
+    type: "image",
+    path: "assets/images/imp random.jpeg",
+    tags: ["random", "important", "generic", "placeholder"]
+  },
+  {
+    label: "important random",
+    type: "image",
+    path: "assets/images/important random.jpeg",
+    tags: ["random", "important", "generic", "placeholder"]
+  },
+  {
+    label: "innovation , startup and random",
+    type: "image",
+    path: "assets/images/innovation , startup and random.jpeg",
+    tags: ["innovation", "startup", "idea", "business", "technology", "entrepreneur", "random"]
+  },
+  {
+    label: "internet and lan cabels",
+    type: "image",
+    path: "assets/images/internet and lan cabels.jpeg",
+    tags: ["internet", "lan cables", "networking", "ethernet", "connectivity", "tech", "hardware"]
+  },
+  {
+    label: "library_2",
+    type: "image",
+    path: "assets/images/library_2.jpeg",
+    tags: ["library", "books", "education", "learning", "study", "shelves", "knowledge"]
+  },
+  {
+    label: "meeting and random",
+    type: "image",
+    path: "assets/images/meeting and random.jpeg",
+    tags: ["meeting", "conference", "business", "discussion", "team", "random"]
+  },
+  {
+    label: "meeting_0",
+    type: "image",
+    path: "assets/images/meeting_0.jpeg",
+    tags: ["meeting", "corporate", "teamwork", "office", "collaboration"]
+  },
+  {
+    label: "mining",
+    type: "image",
+    path: "assets/images/mining.jpg",
+    tags: ["mining", "excavation", "resources", "coal", "earth", "industry", "heavy machinery"]
+  },
+  {
+    label: "money and random",
+    type: "image",
+    path: "assets/images/money and random.jpeg",
+    tags: ["money", "currency", "cash", "finance", "wealth", "banking", "random"]
+  },
+  {
+    label: "mri scan image of an human brain ",
+    type: "image",
+    path: "assets/images/mri scan image of an human brain .jpeg",
+    tags: ["mri scan", "brain", "medical", "neurology", "health", "hospital", "science"]
+  },
+  {
+    label: "organic_farming and rnadom",
+    type: "image",
+    path: "assets/images/organic_farming and rnadom.jpeg",
+    tags: ["organic farming", "agriculture", "sustainable", "crops", "green", "random"]
+  },
+  {
+    label: "physics and important random",
+    type: "image",
+    path: "assets/images/physics and important random.jpeg",
+    tags: ["physics", "science", "formulas", "education", "math", "random", "important"]
+  },
+  {
+    label: "pllution and plastic in the river",
+    type: "image",
+    path: "assets/images/pllution and plastic in the river.jpeg",
+    tags: ["pollution", "plastic", "river", "water pollution", "environment", "waste", "trash"]
+  },
+  {
+    label: "random (2)",
+    type: "image",
+    path: "assets/images/random (2).jpeg",
+    tags: ["random", "placeholder", "misc", "generic"]
+  },
+  {
+    label: "random (3)",
+    type: "image",
+    path: "assets/images/random (3).jpeg",
+    tags: ["random", "placeholder", "misc", "generic"]
+  },
+  {
+    label: "random",
+    type: "image",
+    path: "assets/images/random.jpeg",
+    tags: ["random", "placeholder", "misc", "generic"]
+  },
+  {
+    label: "random",
+    type: "image",
+    path: "assets/images/random.png",
+    tags: ["random", "placeholder", "misc", "generic"]
+  },
+  {
+    label: "satellite in the space and imprtant random",
+    type: "image",
+    path: "assets/images/satellite in the space and imprtant random.jpg",
+    tags: ["satellite", "space", "orbit", "technology", "communications", "random", "important"]
+  },
+  {
+    label: "shipping_route_map with miniachure and random",
+    type: "image",
+    path: "assets/images/shipping_route_map with miniachure and random.jpeg",
+    tags: ["shipping route", "map", "logistics", "global trade", "miniature", "navigation", "random"]
+  },
+  {
+    label: "social_networking apps in the phone",
+    type: "image",
+    path: "assets/images/social_networking apps in the phone.jpeg",
+    tags: ["social networking", "apps", "smartphone", "social media", "technology", "communication", "mobile"]
+  },
+  {
+    label: "solar plant",
+    type: "image",
+    path: "assets/images/solar plant.jpeg",
+    tags: ["solar plant", "solar panels", "renewable energy", "green energy", "sun", "power"]
+  },
+  {
+    label: "spects and book random",
+    type: "image",
+    path: "assets/images/spects and book random.jpeg",
+    tags: ["spectacles", "glasses", "book", "reading", "study", "education", "random"]
+  },
+  {
+    label: "sports_coaching random",
+    type: "image",
+    path: "assets/images/sports_coaching random.jpeg",
+    tags: ["sports coaching", "training", "coach", "athlete", "exercise", "random"]
+  },
+  {
+    label: "stadium_crowd_9",
+    type: "image",
+    path: "assets/images/stadium_crowd_9.jpeg",
+    tags: ["stadium", "crowd", "audience", "sports", "event", "fans", "match"]
+  },
+  {
+    label: "stress",
+    type: "image",
+    path: "assets/images/stress.jpeg",
+    tags: ["stress", "headache", "mental health", "pressure", "anxiety", "workload", "burnout"]
+  },
+  {
+    label: "tabel for random",
+    type: "image",
+    path: "assets/images/tabel for random.jpeg",
+    tags: ["table", "furniture", "interior", "random"]
+  },
+  {
+    label: "target and random",
+    type: "image",
+    path: "assets/images/target and random.jpeg",
+    tags: ["target", "goal", "bullseye", "aim", "success", "strategy", "random"]
+  },
+  {
+    label: "tax",
+    type: "image",
+    path: "assets/images/tax.jpeg",
+    tags: ["tax", "forms", "finance", "accounting", "government", "audit"]
+  },
+  {
+    label: "teacher_teaching in the old indian govt school to childer",
+    type: "image",
+    path: "assets/images/teacher_teaching in the old indian govt school to childer.jpeg",
+    tags: ["teacher", "teaching", "school", "classroom", "education", "india", "children", "rural education"]
+  },
+  {
+    label: "trading",
+    type: "image",
+    path: "assets/images/trading.jpeg",
+    tags: ["trading", "stock market", "forex", "finance", "charts", "business", "economy"]
+  },
+  {
+    label: "universe space",
+    type: "image",
+    path: "assets/images/universe space.jpeg",
+    tags: ["universe", "space", "cosmos", "infinity", "astronomy", "stars"]
+  },
+  {
+    label: "university",
+    type: "image",
+    path: "assets/images/university.jpeg",
+    tags: ["university", "campus", "college", "education", "degree", "students", "learning"]
+  },
+  {
+    label: "volunteering image of the some people hands holding a plant",
+    type: "image",
+    path: "assets/images/volunteering image of the some people hands holding a plant.jpeg",
+    tags: ["volunteering", "hands", "plant", "environment", "growth", "nature", "care", "sustainability"]
+  },
+  {
+    label: "warehouse_management and random",
+    type: "image",
+    path: "assets/images/warehouse_management and random.jpeg",
+    tags: ["warehouse", "management", "logistics", "storage", "inventory", "supply chain", "random"]
+  },
+  {
+    label: "waste dump ward",
+    type: "image",
+    path: "assets/images/waste dump ward.jpeg",
+    tags: ["waste dump", "garbage", "trash", "landfill", "pollution", "environment"]
+  },
+  {
+    label: "water poring in a glass",
+    type: "image",
+    path: "assets/images/water poring in a glass.jpeg",
+    tags: ["water", "pouring", "glass", "drink", "liquid", "refreshing", "hydration"]
+  },
+  {
+    label: "web_development",
+    type: "image",
+    path: "assets/images/web_development.jpeg",
+    tags: ["web development", "coding", "programming", "html", "css", "computer", "technology"]
+  }
+];
+
+// ============== ASSET TRACKING SYSTEM ==============
+// Tracks usage to prevent image/icon repetition
+
+// Global tracking state - reset before each PPT generation
+let usedImages = new Set();
+let usedRandomImages = new Set(); // Track random-tagged images separately
+let iconUsageCount = new Map();
+
+/**
+ * Reset all tracking - call this before generating a new PPT
+ */
+function resetAssetTracking() {
+  usedImages.clear();
+  usedRandomImages.clear(); // Also clear random images tracking
+  iconUsageCount.clear();
+  // Also reset colors in templates.js
+  if (window.resetColors) {
+    window.resetColors();
+  }
+}
+
+/**
+ * Check if an image has "random" tag
+ * @param {object} img - Image object
+ * @returns {boolean} - True if image has "random" tag
+ */
+function hasRandomTag(img) {
+  if (!img.tags || img.tags.length === 0) return false;
+  return img.tags.some(tag => tag.toLowerCase() === "random");
+}
+
+/**
+ * Get a random-tagged image that hasn't been used yet
+ * @param {array} images - All images
+ * @returns {object|null} - Random-tagged image or null if none available
+ */
+function getRandomTaggedImage(images) {
+  // Filter to get only images with "random" tag that haven't been used
+  const randomTaggedImages = images.filter(img =>
+    hasRandomTag(img) && !usedRandomImages.has(img.label) && !usedImages.has(img.label)
+  );
+
+  if (randomTaggedImages.length === 0) return null;
+
+  // Pick a random one from available random-tagged images
+  const selectedImage = randomTaggedImages[Math.floor(Math.random() * randomTaggedImages.length)];
+
+  // Mark as used in both sets
+  usedImages.add(selectedImage.label);
+  usedRandomImages.add(selectedImage.label);
+
+  return selectedImage;
+}
+
+/**
+ * Get a background image based on keywords
+ * Each image can only be used ONCE per entire PPT
+ * When no match found, uses images with "random" tag (each random image used only once)
+ * @param {string[]} keywords - Keywords to match
+ * @returns {object|null} - Image object with path, or null if none available
+ */
+function getBackgroundImage(keywords) {
+  // Filter to only images
+  const images = tagData.filter(item => item.type === "image");
+
+  if (!keywords || keywords.length === 0) {
+    // No keywords provided - use random-tagged image
+    const randomImage = getRandomTaggedImage(images);
+    if (randomImage) return randomImage;
+
+    // If no random-tagged images available, fall back to any unused image
+    const unusedImages = images.filter(img => !usedImages.has(img.label));
+    if (unusedImages.length === 0) return null;
+
+    const selectedImage = unusedImages[Math.floor(Math.random() * unusedImages.length)];
+    usedImages.add(selectedImage.label);
+    return selectedImage;
+  }
+
+  // Normalize keywords
+  const normalizedKeywords = keywords.map(k => k.toLowerCase().trim());
+
+  // Score each image by matching tags (exclude "random" tag from scoring)
+  const scoredImages = images
+    .filter(img => !usedImages.has(img.label)) // Only unused images
+    .map(img => {
+      let score = 0;
+      // Filter out "random" tag from scoring - we don't want random-tagged images to match
+      const imageTags = img.tags
+        .filter(t => t.toLowerCase() !== "random")
+        .map(t => t.toLowerCase());
+
+      normalizedKeywords.forEach(keyword => {
+        imageTags.forEach(tag => {
+          if (tag.includes(keyword) || keyword.includes(tag)) {
+            score += 2;
+          }
+          // Partial match
+          const keywordWords = keyword.split(/\s+/);
+          const tagWords = tag.split(/\s+/);
+          keywordWords.forEach(kw => {
+            if (tagWords.some(tw => tw.includes(kw) || kw.includes(tw))) {
+              score += 1;
+            }
+          });
+        });
+      });
+
+      return { image: img, score };
+    })
+    .filter(item => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  if (scoredImages.length > 0) {
+    const selectedImage = scoredImages[0].image;
+    usedImages.add(selectedImage.label);
+    return selectedImage;
+  }
+
+  // No keyword match found - use random-tagged image as fallback
+  console.log('  No keyword match found, using random-tagged image');
+  const randomImage = getRandomTaggedImage(images);
+  if (randomImage) return randomImage;
+
+  // If no random-tagged images available, fall back to any unused image
+  const unusedImages = images.filter(img => !usedImages.has(img.label));
+  if (unusedImages.length === 0) return null;
+
+  const selectedImage = unusedImages[Math.floor(Math.random() * unusedImages.length)];
+  usedImages.add(selectedImage.label);
+  return selectedImage;
+}
+
+/**
+ * Get icons based on keywords
+ * Each icon can be used max 2 times per entire PPT
+ * @param {string[]} keywords - Keywords to match
+ * @param {number} count - Number of icons needed (default 3)
+ * @returns {object[]} - Array of icon objects
+ */
+function getIcons(keywords, count = 3) {
+  // Filter to only icons
+  const icons = tagData.filter(item => item.type === "icon");
+
+  // Filter icons that haven't been used 2 times yet
+  const availableIcons = icons.filter(icon => {
+    const currentCount = iconUsageCount.get(icon.label) || 0;
+    return currentCount < 2;
+  });
+
+  if (availableIcons.length === 0) return [];
+
+  if (!keywords || keywords.length === 0) {
+    // Return random available icons
+    const shuffled = [...availableIcons].sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, count);
+
+    // Update usage counts
+    selected.forEach(icon => {
+      const currentCount = iconUsageCount.get(icon.label) || 0;
+      iconUsageCount.set(icon.label, currentCount + 1);
+    });
+
+    return selected;
+  }
+
+  // Normalize keywords
+  const normalizedKeywords = keywords.map(k => k.toLowerCase().trim());
+
+  // Score each icon by matching tags
+  const scoredIcons = availableIcons
+    .map(icon => {
+      let score = 0;
+      const iconTags = icon.tags.map(t => t.toLowerCase());
+
+      normalizedKeywords.forEach(keyword => {
+        iconTags.forEach(tag => {
+          if (tag.includes(keyword) || keyword.includes(tag)) {
+            score += 2;
+          }
+          // Partial match
+          const keywordWords = keyword.split(/\s+/);
+          const tagWords = tag.split(/\s+/);
+          keywordWords.forEach(kw => {
+            if (tagWords.some(tw => tw.includes(kw) || kw.includes(tw))) {
+              score += 1;
+            }
+          });
+        });
+      });
+
+      return { icon, score };
+    })
+    .sort((a, b) => b.score - a.score);
+
+  // Get top matching icons, or fill with random ones
+  const result = [];
+  const seenLabels = new Set();
+
+  // First add matching icons
+  for (const item of scoredIcons) {
+    if (result.length >= count) break;
+    if (item.score > 0 && !seenLabels.has(item.icon.label)) {
+      result.push(item.icon);
+      seenLabels.add(item.icon.label);
+    }
+  }
+
+  // Fill remaining with random available icons
+  if (result.length < count) {
+    const remaining = availableIcons.filter(i => !seenLabels.has(i.label));
+    const shuffled = remaining.sort(() => Math.random() - 0.5);
+
+    for (const icon of shuffled) {
+      if (result.length >= count) break;
+      result.push(icon);
+      seenLabels.add(icon.label);
+    }
+  }
+
+  // Update usage counts
+  result.forEach(icon => {
+    const currentCount = iconUsageCount.get(icon.label) || 0;
+    iconUsageCount.set(icon.label, currentCount + 1);
+  });
+
+  return result;
+}
+
+// Export functions globally
+window.resetAssetTracking = resetAssetTracking;
+window.getBackgroundImage = getBackgroundImage;
+window.getIcons = getIcons;
